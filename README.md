@@ -21,7 +21,7 @@ It has following vulnerabilities which can be exploited
 [ping functionality vulnerable to command injection using | we can concatenate commands]
 
 -->CSRF
-[Profile update csrf token missing]
+[ csrf token missing]
 
 -->XSS
-[No input enconding/sanitization which echoes back output ]
+[No user input enconding/sanitizaion . output also without encoding/sanitization which is vulnerable to xss ]

@@ -50,6 +50,15 @@ Enter Url : <input text="text" name="url" value=""></br>
 </form>
 </br>
 
+
+</br>
+<h2 > Terms of Service </h2>
+<a href="tos.php?file=service.html" >Click here </a>
+
+</br>
+</br>
+</br>
+
 <a href="logout.php" >Logout</a>
 <script>
 if(top != window) {

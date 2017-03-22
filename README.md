@@ -16,6 +16,8 @@ It has following vulnerabilities which can be exploited
 -->Insecure Direct Object reference
 [Account deletion ]
 [Password change]
+[Password reset]
+
 
 -->Command Injection
 [ping functionality vulnerable to command injection using | we can concatenate commands]
@@ -25,3 +27,6 @@ It has following vulnerabilities which can be exploited
 
 -->XSS
 [No user input enconding/sanitizaion . output also without encoding/sanitization which is vulnerable to xss ]
+
+-->Local File Inclusion (LFI) :
+(While including TOS file)

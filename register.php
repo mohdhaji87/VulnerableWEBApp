@@ -20,11 +20,11 @@ echo "" . '<br />';
 
 if((mysqli_query($db, $query))==1)
 {
- echo 'sucessfully registerd as '.$a.'<br />'; 
+ echo '<h2>sucessfully registerd as </h2>'.$a.'<br />'; 
 }
 else
 {
-	echo 'Username is taken or registration error';
+	echo '<h2>Username is taken or registration error</h2>';
 }
 //Step 4
 mysqli_close($db);

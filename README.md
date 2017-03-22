@@ -24,9 +24,14 @@ It has following vulnerabilities which can be exploited
 
 -->CSRF
 [ csrf token missing]
+[while profile update]
+
 
 -->XSS
 [No user input enconding/sanitizaion . output also without encoding/sanitization which is vulnerable to xss ]
+[While registering]
+[At setting page]
+
 
 -->Local File Inclusion (LFI) :
 (While including TOS file)

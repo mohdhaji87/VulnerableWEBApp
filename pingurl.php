@@ -20,6 +20,8 @@ if($check!=NULL && $url==NULL  )
 header("Location: /vulnerable/settings.php");	
 }
 
+echo "<h1>Result from Vulnerable server</h1>";
+
 echo system("ping $url");
 ?>
 <script>

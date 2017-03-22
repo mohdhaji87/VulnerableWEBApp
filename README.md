@@ -8,6 +8,7 @@ It has following vulnerabilities which can be exploited
 [Insert SQLI in Register process]
 [Update SQLI in profile update , changing password]
 [Delete SQLI in Deleting account]
+[Blind SQLI in forgot password]
 
 --> Clickjacking (Framebursting technique, X-frame options missing)
 [Framebursting is used in all the pages which can be exploited using sandbox="allow-forms" ]

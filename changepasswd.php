@@ -36,10 +36,10 @@ $result=mysqli_query($db, $sql) or die('Error querying database.');
 
 if( mysqli_affected_rows($db)>0)
 {
-echo "Password updated successfully";
+echo "<h2>Password updated successfully</h2>";
 }
 else {
-	echo "Incorrect Password";
+	echo "<h2>Incorrect Password</h2>";
 }
 
 

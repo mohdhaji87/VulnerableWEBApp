@@ -17,6 +17,7 @@ $result=mysqli_query($db, $sql) or die('Error querying database.');
 <html>
 <body>
 <h1>Welcome <?php echo $a; ?></h1>
+	<center>
 <h2>Profile setting</h2>
 <form action="Profileupdate.php" method="POST" >
 Username : <input type="text" name="username" disabled="" value="<?php echo $a; ?>"/> </br>
@@ -60,6 +61,9 @@ Enter Url : <input text="text" name="url" value=""></br>
 </br>
 
 <a href="logout.php" >Logout</a>
+</center>
+
+
 <script>
 if(top != window) {
   top.location = window.location

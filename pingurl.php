@@ -10,14 +10,14 @@ $url=$_POST['url'];
 $check=$_SESSION['login_user'];
 if($check==NULL )
 {
-	header("Location: /vulnerable/index.html");
+	header("Location: /index.html");
 }
 
 
 //check values else redirect to settings page
 if($check!=NULL && $url==NULL  )
 {
-header("Location: /vulnerable/settings.php");	
+header("Location: /settings.php");	
 }
 
 echo "<h1>Result from Vulnerable server</h1>";

@@ -12,7 +12,9 @@ enable mysql in php, create mysql user 'test:test', create database 'project' in
 'project' with columns 'user_id, username, password and email' as shown below.
 Reload webserver and visit webapp.
 
+
 ------------------ MYSQL steps ------------------
+
 CREATE DATABASE project;
 CREATE TABLE user (
     user_id int NOT NULL AUTO_INCREMENT,

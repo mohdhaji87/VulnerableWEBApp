@@ -11,7 +11,7 @@
 include("config.php");
 //Step2
 $a=$_POST['username'];
-$b=$_POST['passwd'];
+$b=$_POST['password'];
 $c=$_POST['email'];
 $query = "insert into user values('$a','$b','$c')";
 

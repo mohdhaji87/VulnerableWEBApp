@@ -27,7 +27,7 @@ header("Location: /settings.php");
 
 //update password 
 
-$sql="UPDATE register set password='$new' where username='$user' AND password='$old'";
+$sql="UPDATE user set password='$new' where username='$user' AND password='$old'";
 
 echo $sql;
 echo "</br>";

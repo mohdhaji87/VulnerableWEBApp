@@ -4,7 +4,6 @@ session_start();
 //get post parameters
 $user=$_SESSION['login_user']; //getting username from session 
 $em=$_POST['email'];
-$gen=$_POST['gender'];
 
 //check session else redirect to login page
 $check=$_SESSION['login_user'];
@@ -23,7 +22,7 @@ header("Location: /settings.php");
 
 //update information
 
-$sql="UPDATE register SET  email='$em', gender='$gen' where username='$user'";
+$sql="UPDATE user SET  email='$em' where username='$user'";
 echo $sql;
 $result=mysqli_query($db, $sql) or die('Error querying database.');
 

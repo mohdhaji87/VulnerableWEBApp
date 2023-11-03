@@ -22,7 +22,7 @@ header("Location: /settings.php");
 
 //update information
 
-$sql="UPDATE user SET  email='$em' where username='$user'";
+$sql="UPDATE user SET email='$em' where username='$user'";
 echo $sql;
 $result=mysqli_query($db, $sql) or die('Error querying database.');
 

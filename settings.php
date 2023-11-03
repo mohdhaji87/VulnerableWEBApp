@@ -30,7 +30,7 @@ include("config.php");
 session_start();
 //get username of logged in user
 $check=$_SESSION['login_user'];
-require_once  "path/to/bulletproof.php";
+require_once  "/bulletproof.php";
 
 $image = new Bulletproof\Image($_FILES);
 

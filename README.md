@@ -9,7 +9,7 @@ modified some stuff
 to run:
 Install webserver (e.g. nginx), install php, enable php in nginx, install mysql,
 enable mysql in php, create database 'project' in mysql, create table 'user' in database
-'project', create columns '...... (WIP)
+'project' with columns '...... (WIP)
 
 
 

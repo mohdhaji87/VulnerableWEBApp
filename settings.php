@@ -5,9 +5,9 @@ session_start();
 $check=$_SESSION['login_user'];
 if($check==NULL)
 {
-	header("Location: /vulnerable/index.html");
+	header("Location: /index.html");
 }
-$sql="select username ,email,gender from register where username='$check'";
+$sql="select username,email from user where username='$check'";
 $result=mysqli_query($db, $sql) or die('Error querying database.');
 //fetch values from database
  if($row = mysqli_fetch_array($result)) {
@@ -19,19 +19,18 @@ $result=mysqli_query($db, $sql) or die('Error querying database.');
 <h1>Welcome <?php echo $a; ?></h1>
 	<center>
 <h2>Profile setting</h2>
-<form action="Profileupdate.php" method="POST" >
+<form action="profileupdate.php" method="POST" >
 Username : <input type="text" name="username" disabled="" value="<?php echo $a; ?>"/> </br>
 Email : <input type="email" name="email" value="<?php echo $row["email"]; ?>"></br>
-Gender : <input type="radio" name="gender" value="male"> Male <input type="radio" name="gender" value="female"> Female </br>
 <input type="submit" name="update" value="update">
 </form>
 
 </br>
 <h2> Change password </h2>
-<form action="changepasswd.php" method="POST">
+<form action="changepassword.php" method="POST">
 Username : <input type="hidden" name="username"  value="<?php echo $a ;?>" </br>
-Old Password : <input type="text" name="oldpasswd" value="" > </br>
-New Password : <input type="text" name="newpasswd" value="" > </br>
+Old Password : <input type="text" name="oldpassword" value="" > </br>
+New Password : <input type="text" name="newpassword" value="" > </br>
 <input type="submit" name="update" value="update">
 </form>
 
@@ -40,7 +39,7 @@ New Password : <input type="text" name="newpasswd" value="" > </br>
 
 <form action="deleteaccount.php" method="POST">
 Username : <input type="hidden" name="username"  value="<?php echo $a ;?>" </br>
-Old Password : <input type="text" name="oldpasswd" value="" > </br>
+Old Password : <input type="text" name="oldpassword" value="" > </br>
 <input type="submit" name="update" value="update">
 </form>
 

@@ -26,7 +26,7 @@ $result=mysqli_query($db, $sql) or die('Error querying database.');
 </form>
 
 <?php
-require_once  "/bulletproof.php";
+require_once  "./bulletproof.php";
 
 $image = new Bulletproof\Image($_FILES);
 
@@ -43,7 +43,7 @@ $image->setMime(array('jpeg', 'gif'));
 $image->setDimension(128, 128);
 
 // To create a folder name to store the uploaded image, with optional chmod permission
-$image->setStorage('/avatars/'.$row["user_id"], 600);
+$image->setStorage($row["user_id"], 600);
 
 if($image["pictures"]){
   $upload = $image->upload(); 

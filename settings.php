@@ -34,7 +34,7 @@ $image = new Bulletproof\Image($_FILES);
 $image->setName($row["user_id"]);
 
 // To set the min/max image size to upload (in bytes)
-$image->setSize(5000, 10000);
+$image->setSize(1000, 10000);
 
 // To define a list of allowed image types to upload
 $image->setMime(array('jpeg', 'gif'));

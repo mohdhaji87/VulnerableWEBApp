@@ -24,6 +24,22 @@ $result=mysqli_query($db, $sql) or die('Error querying database.');
 <input type="file" name="pictures" accept="image/*"/>
 <input type="submit" value="upload"/>
 </form>
+
+<?php
+require_once  "path/to/bulletproof.php";
+
+$image = new Bulletproof\Image($_FILES);
+
+if($image["pictures"]){
+  $upload = $image->upload(); 
+
+  if($upload){
+    echo $upload->getPath(); // uploads/cat.gif
+  }else{
+    echo $image->getError(); 
+  }
+}
+?>
 		
 <h2>Profile settings</h2>
 <form action="profileupdate.php" method="POST">

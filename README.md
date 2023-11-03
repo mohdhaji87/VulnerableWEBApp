@@ -8,7 +8,7 @@ modified some stuff
 
 to run:
 Install webserver (e.g. nginx), install php, enable php in nginx, install mysql,
-enable mysql in php, create database 'project' in mysql, create table 'user' in database
+enable mysql in php, create mysql user 'test:test', create database 'project' in mysql, create table 'user' in database
 'project' with columns '...... (WIP)
 
 

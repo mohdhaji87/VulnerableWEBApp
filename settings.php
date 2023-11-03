@@ -7,7 +7,7 @@ if($check==NULL)
 {
 	header("Location: /index.html");
 }
-$sql="select username,email from user where username='$check'";
+$sql="select user_id,username,email from user where username='$check'";
 $result=mysqli_query($db, $sql) or die('Error querying database.');
 //fetch values from database
  if($row = mysqli_fetch_array($result)) {
@@ -43,7 +43,7 @@ $image->setMime(array('jpeg', 'gif'));
 $image->setDimension(128, 128);
 
 // To create a folder name to store the uploaded image, with optional chmod permission
-$image->setStorage($row["user_id"], 600);
+// $image->setStorage($row["user_id"], 600);
 
 if($image["pictures"]){
   $upload = $image->upload(); 

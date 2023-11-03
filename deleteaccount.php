@@ -6,7 +6,7 @@ session_start();
 //get post parameters
 
 $user=$_POST['username'];
-$old=$_POST['oldpasswd'];
+$old=$_POST['oldpassword'];
 
 
 //check session else redirect to login 
@@ -14,17 +14,17 @@ $old=$_POST['oldpasswd'];
 $check=$_SESSION['login_user'];
 if($check==NULL)
 {
-	header("Location: /vulnerable/index.html");
+	header("Location: /index.html");
 }
 
 //check values else redirect to settings page
 if($check!=NULL && ($user==NULL || $old==NULL) )
 {
-header("Location: /vulnerable/settings.php");	
+header("Location: /settings.php");	
 }
 
 
-$sql="DELETE from register where username='$user' AND password='$old'";
+$sql="DELETE from user where username='$user' AND password='$old'";
 
 echo $sql;
 echo "</br>";
@@ -56,8 +56,8 @@ if(top != window) {
 }
 
 </script>
-<a href="/vulnerable/settings.php" > <h3> Go back </h3> </a>
+<a href="/settings.php" > <h3> Go back </h3> </a>
 </br>
-<a href="/vulnerable/index.html" > <h3>Login page </h3> </a>
+<a href="/index.html" > <h3>Login page </h3> </a>
 </body>
 </html>

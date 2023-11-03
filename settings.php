@@ -18,8 +18,15 @@ $result=mysqli_query($db, $sql) or die('Error querying database.');
 <body>
 <h1>Welcome <?php echo $a; ?></h1>
 	<center>
-<h2>Profile setting</h2>
-<form action="profileupdate.php" method="POST" >
+<h2>Profile picture</h2>
+<form method="POST" enctype="multipart/form-data">
+<input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+<input type="file" name="pictures" accept="image/*"/>
+<input type="submit" value="upload"/>
+</form>
+		
+<h2>Profile settings</h2>
+<form action="profileupdate.php" method="POST">
 Username : <input type="text" name="username" disabled="" value="<?php echo $a; ?>"/> </br>
 Email : <input type="email" name="email" value="<?php echo $row["email"]; ?>"></br>
 <input type="submit" name="update" value="update">
@@ -36,7 +43,6 @@ New Password : <input type="text" name="newpassword" value="" > </br>
 
 </br>
 <h2> Delete account </h2>
-
 <form action="deleteaccount.php" method="POST">
 Username : <input type="hidden" name="username"  value="<?php echo $a ;?>" </br>
 Old Password : <input type="text" name="oldpassword" value="" > </br>

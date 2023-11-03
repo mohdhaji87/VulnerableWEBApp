@@ -26,9 +26,28 @@ $result=mysqli_query($db, $sql) or die('Error querying database.');
 </form>
 
 <?php
+include("config.php");
+session_start();
+//get username of logged in user
+$check=$_SESSION['login_user'];
 require_once  "path/to/bulletproof.php";
 
 $image = new Bulletproof\Image($_FILES);
+
+// To provide a name for the image. If unused, image name will be auto-generated.
+$image->setName($check);
+
+// To set the min/max image size to upload (in bytes)
+$image->setSize(5000, 10000);
+
+// To define a list of allowed image types to upload
+$image->setMime(array('jpeg', 'gif'));
+
+// To set the max image height/width to upload (limit in pixels)
+$image->setDimension(128, 128);
+
+// To create a folder name to store the uploaded image, with optional chmod permission
+$image->setStorage(/avatars, $optionalPermission);
 
 if($image["pictures"]){
   $upload = $image->upload(); 

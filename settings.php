@@ -47,7 +47,7 @@ $image->setMime(array('jpeg', 'gif'));
 $image->setDimension(128, 128);
 
 // To create a folder name to store the uploaded image, with optional chmod permission
-$image->setStorage(/avatars, 600);
+$image->setStorage('/avatars/'.$check, 600);
 
 if($image["pictures"]){
   $upload = $image->upload(); 

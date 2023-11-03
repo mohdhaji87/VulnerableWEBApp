@@ -13,14 +13,13 @@ include("config.php");
 $a=$_POST['username'];
 $b=$_POST['passwd'];
 $c=$_POST['email'];
-$d=$_POST['gender'];
-$query = "insert into register values('$a','$b','$c','$d')";
+$query = "insert into user values('$a','$b','$c')";
 
 echo "" . '<br />';
 
 if((mysqli_query($db, $query))==1)
 {
- echo '<h2>sucessfully registerd as </h2>'.$a.'<br />'; 
+ echo '<h2>Successfully registered as </h2>'.$a.'<br />'; 
 }
 else
 {
@@ -30,7 +29,7 @@ else
 mysqli_close($db);
 ?>
 
-<a href="/vulnerable/index.html" >Go back </a>
+<a href="/index.html" >Go back </a>
 
 <script>
 if(top != window) {

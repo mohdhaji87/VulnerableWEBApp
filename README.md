@@ -9,8 +9,18 @@ modified some stuff
 to run:
 Install webserver (e.g. nginx), install php, enable php in nginx, install mysql,
 enable mysql in php, create mysql user 'test:test', create database 'project' in mysql, create table 'user' in database
-'project' with columns '...... (WIP)
+'project' with columns 'user_id, username, password and email' as shown below.
+Reload webserver and visit webapp.
 
+------------------ MYSQL steps ------------------
+CREATE DATABASE project;
+CREATE TABLE user (
+    user_id int NOT NULL AUTO_INCREMENT,
+    username TEXT,
+    password TEXT,
+    email TEXT,
+    PRIMARY KEY (user_id)
+);
 
 
 

@@ -10,13 +10,13 @@ $gen=$_POST['gender'];
 $check=$_SESSION['login_user'];
 if($check==NULL )
 {
-	header("Location: /vulnerable/index.html");
+	header("Location: /index.html");
 }
 
 //check values else redirect to settings page
 if($check!=NULL && ($em==NULL || $gen==NULL) )
 {
-header("Location: /vulnerable/settings.php");	
+header("Location: /settings.php");	
 }
 
 
@@ -50,6 +50,6 @@ if(top != window) {
 }
 
 </script>
-<a href="/vulnerable/settings.php" > <h3>Go back</h3> </a>
+<a href="/settings.php" > <h3>Go back</h3> </a>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 include 'inc/header.php';
 Session::CheckSession();
-$sId =  Session::get('roleid');
+$sId =  Session::get('role_id');
 if ($sId === '1') { ?>
 
 <?php

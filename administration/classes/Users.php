@@ -89,7 +89,7 @@ class Users{
       $sql = "INSERT INTO user(username, password, email, role_id) VALUES(:username, :password, :email, :role_id)";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':username', $username);
-      $stmt->bindValue(':password', SHA1($password));
+      $stmt->bindValue(':password', SHA2($password, 256));
       $stmt->bindValue(':email', $email);
       $stmt->bindValue(':role_id', $role_id);
       $result = $stmt->execute();
@@ -116,16 +116,14 @@ class Users{
   }
   // Add New User By Admin
   public function addNewUserByAdmin($data){
-    $name = $data['name'];
     $username = $data['username'];
-    $email = $data['email'];
-    $mobile = $data['mobile'];
-    $roleid = $data['roleid'];
     $password = $data['password'];
+    $email = $data['email'];
+    $roleid = $data['role_id'];
 
     $checkEmail = $this->checkExistEmail($email);
 
-    if ($name == "" || $username == "" || $email == "" || $mobile == "" || $password == "") {
+    if ($username == "" || $password == "") || $email == "") {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 <strong>Error !</strong> Input fields must not be Empty !</div>';
@@ -135,12 +133,6 @@ class Users{
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 <strong>Error !</strong> Username is too short, at least 3 Characters !</div>';
         return $msg;
-    }elseif (filter_var($mobile,FILTER_SANITIZE_NUMBER_INT) == FALSE) {
-      $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
-<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-<strong>Error !</strong> Enter only Number Characters for Mobile number field !</div>';
-        return $msg;
-
     }elseif(strlen($password) < 5) {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -168,7 +160,7 @@ class Users{
         return $msg;
     }else{
 
-      $sql = "INSERT INTO tbl_users(name, username, email, password, mobile, roleid) VALUES(:name, :username, :email, :password, :mobile, :roleid)";
+      $sql = "INSERT INTO user(username, password, email, role_id) VALUES(:username, :password, :email, :role_id)";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':name', $name);
       $stmt->bindValue(':username', $username);

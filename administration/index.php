@@ -105,54 +105,41 @@ if (isset($username)) {
                         <td>
                           <?php if ( Session::get("role_id") == '1') {?>
                             <a class="btn btn-success btn-sm
-                            " href="profile.php?id=<?php echo $value->id;?>">View</a>
-                            <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->id;?>">Edit</a>
+                            " href="profile.php?id=<?php echo $value->user_id;?>">View</a>
+                            <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->user_id;?>">Edit</a>
                             <a onclick="return confirm('Are you sure To Delete ?')" class="btn btn-danger
-                    <?php if (Session::get("id") == $value->id) {
+                    <?php if (Session::get("user_id") == $value->user_id) {
                       echo "disabled";
                     } ?>
-                             btn-sm " href="?remove=<?php echo $value->id;?>">Remove</a>
+                             btn-sm " href="?remove=<?php echo $value->user_id;?>">Remove</a>
 
                              <?php if ($value->isActive == '0') {  ?>
                                <a onclick="return confirm('Are you sure To Deactive ?')" class="btn btn-warning
-                       <?php if (Session::get("id") == $value->id) {
+                       <?php if (Session::get("user_id") == $value->user_id) {
                          echo "disabled";
                        } ?>
-                                btn-sm " href="?deactive=<?php echo $value->id;?>">Disable</a>
+                                btn-sm " href="?deactive=<?php echo $value->user_id;?>">Disable</a>
                              <?php } elseif($value->isActive == '1'){?>
                                <a onclick="return confirm('Are you sure To Active ?')" class="btn btn-secondary
-                       <?php if (Session::get("id") == $value->id) {
+                       <?php if (Session::get("user_id") == $value->user_id) {
                          echo "disabled";
                        } ?>
-                                btn-sm " href="?active=<?php echo $value->id;?>">Active</a>
+                                btn-sm " href="?active=<?php echo $value->user_id;?>">Active</a>
                              <?php } ?>
 
 
 
 
-                        <?php  }elseif(Session::get("id") == $value->id  && Session::get("roleid") == '2'){ ?>
-                          <a class="btn btn-success btn-sm " href="profile.php?id=<?php echo $value->id;?>">View</a>
-                          <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->id;?>">Edit</a>
-                        <?php  }elseif( Session::get("roleid") == '2'){ ?>
-                          <a class="btn btn-success btn-sm
-                          <?php if ($value->roleid == '1') {
-                            echo "disabled";
-                          } ?>
-                          " href="profile.php?id=<?php echo $value->id;?>">View</a>
-                          <a class="btn btn-info btn-sm
-                          <?php if ($value->roleid == '1') {
-                            echo "disabled";
-                          } ?>
-                          " href="profile.php?id=<?php echo $value->id;?>">Edit</a>
-                        <?php }elseif(Session::get("id") == $value->id  && Session::get("roleid") == '3'){ ?>
-                          <a class="btn btn-success btn-sm " href="profile.php?id=<?php echo $value->id;?>">View</a>
-                          <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->id;?>">Edit</a>
+                        <?php  }elseif(Session::get("user_id") == $value->user_id  && Session::get("role_id") == '1'){ ?>
+                          <a class="btn btn-success btn-sm " href="profile.php?id=<?php echo $value->user_id;?>">View</a>
+                          <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->user_id;?>">Edit</a>
+
+                        <?php }elseif(Session::get("user_id") == $value->user_id  && Session::get("role_id") == '2'){ ?>
+                          <a class="btn btn-success btn-sm " href="profile.php?id=<?php echo $value->user_id;?>">View</a>
+                          <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->user_id;?>">Edit</a>
                         <?php }else{ ?>
                           <a class="btn btn-success btn-sm
-                          <?php if ($value->roleid == '1') {
-                            echo "disabled";
-                          } ?>
-                          " href="profile.php?id=<?php echo $value->id;?>">View</a>
+                          " href="profile.php?id=<?php echo $value->user_id;?>">View</a>
 
                         <?php } ?>
 

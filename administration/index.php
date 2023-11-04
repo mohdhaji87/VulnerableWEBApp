@@ -62,12 +62,9 @@ if (isset($username)) {
                   <thead>
                     <tr>
                       <th  class="text-center">SL</th>
-                      <th  class="text-center">Name</th>
                       <th  class="text-center">Username</th>
                       <th  class="text-center">Email address</th>
-                      <th  class="text-center">Mobile</th>
                       <th  class="text-center">Status</th>
-                      <th  class="text-center">Created</th>
                       <th  width='25%' class="text-center">Action</th>
                     </tr>
                   </thead>
@@ -84,36 +81,29 @@ if (isset($username)) {
                      ?>
 
                       <tr class="text-center"
-                      <?php if (Session::get("id") == $value->id) {
+                      <?php if (Session::get("user_id") == $value->user_id) {
                         echo "style='background:#d9edf7' ";
                       } ?>
                       >
 
                         <td><?php echo $i; ?></td>
-                        <td><?php echo $value->name; ?></td>
                         <td><?php echo $value->username; ?> <br>
-                          <?php if ($value->roleid  == '1'){
+                          <?php if ($value->role_id  == '1'){
                           echo "<span class='badge badge-lg badge-info text-white'>Admin</span>";
-                        } elseif ($value->roleid == '2') {
-                          echo "<span class='badge badge-lg badge-dark text-white'>Editor</span>";
-                        }elseif ($value->roleid == '3') {
-                            echo "<span class='badge badge-lg badge-dark text-white'>User Only</span>";
+                        } elseif ($value->role_id == '2') {
+                          echo "<span class='badge badge-lg badge-dark text-white'>User</span>";
                         } ?></td>
                         <td><?php echo $value->email; ?></td>
-
-                        <td><span class="badge badge-lg badge-secondary text-white"><?php echo $value->mobile; ?></span></td>
                         <td>
                           <?php if ($value->isActive == '0') { ?>
                           <span class="badge badge-lg badge-info text-white">Active</span>
                         <?php }else{ ?>
                     <span class="badge badge-lg badge-danger text-white">Deactive</span>
                         <?php } ?>
-
                         </td>
-                        <td><span class="badge badge-lg badge-secondary text-white"><?php echo $users->formatDate($value->created_at);  ?></span></td>
 
                         <td>
-                          <?php if ( Session::get("roleid") == '1') {?>
+                          <?php if ( Session::get("role_id") == '1') {?>
                             <a class="btn btn-success btn-sm
                             " href="profile.php?id=<?php echo $value->id;?>">View</a>
                             <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->id;?>">Edit</a>

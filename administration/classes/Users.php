@@ -123,7 +123,7 @@ class Users{
 
     $checkEmail = $this->checkExistEmail($email);
 
-    if ($username == "" || $password == "") || $email == "") {
+    if ($username == "" || $password == "" || $email == "") {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 <strong>Error !</strong> Input fields must not be Empty !</div>';

@@ -6,14 +6,14 @@ Session::CheckSession();
 
 <?php
 
-if (isset($_GET['id'])) {
-  $userid = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['id']);
+if (isset($_GET['user_id'])) {
+  $user_id = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['user_id']);
 
 }
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
-  $updateUser = $users->updateUserByIdInfo($userid, $_POST);
+  $updateUser = $users->updateUserByIdInfo($user_id, $_POST);
 
 }
 if (isset($updateUser)) {
@@ -32,7 +32,7 @@ if (isset($updateUser)) {
         <div class="card-body">
 
     <?php
-    $getUinfo = $users->getUserInfoById($userid);
+    $getUinfo = $users->getUserInfoById($user_id);
     if ($getUinfo) {
 
 
@@ -47,10 +47,6 @@ if (isset($updateUser)) {
 
           <form class="" action="" method="POST">
               <div class="form-group">
-                <label for="name">Your name</label>
-                <input type="text" name="name" value="<?php echo $getUinfo->name; ?>" class="form-control">
-              </div>
-              <div class="form-group">
                 <label for="username">Your username</label>
                 <input type="text" name="username" value="<?php echo $getUinfo->username; ?>" class="form-control">
               </div>
@@ -58,37 +54,26 @@ if (isset($updateUser)) {
                 <label for="email">Email address</label>
                 <input type="email" id="email" name="email" value="<?php echo $getUinfo->email; ?>" class="form-control">
               </div>
-              <div class="form-group">
-                <label for="mobile">Mobile Number</label>
-                <input type="text" id="mobile" name="mobile" value="<?php echo $getUinfo->mobile; ?>" class="form-control">
-              </div>
 
-              <?php if (Session::get("roleid") == '1') { ?>
+              <?php if (Session::get("role_id") == '1') { ?>
 
               <div class="form-group
-              <?php if (Session::get("roleid") == '1' && Session::get("id") == $getUinfo->id) {
+              <?php if (Session::get("role_id") == '1' && Session::get("user_id") == $getUinfo->user_id) {
                 echo "d-none";
               } ?>
               ">
                 <div class="form-group">
                   <label for="sel1">Select user Role</label>
-                  <select class="form-control" name="roleid" id="roleid">
+                  <select class="form-control" name="role_id" id="role_id">
 
                   <?php
 
-                if($getUinfo->roleid == '1'){?>
+                if($getUinfo->role_id == '1'){?>
                   <option value="1" selected='selected'>Admin</option>
-                  <option value="2">Editor</option>
-                  <option value="3">User only</option>
-                <?php }elseif($getUinfo->roleid == '2'){?>
+                  <option value="2">User</option>
+                <?php }elseif($getUinfo->role_id == '2'){?>
                   <option value="1">Admin</option>
-                  <option value="2" selected='selected'>Editor</option>
-                  <option value="3">User only</option>
-                <?php }elseif($getUinfo->roleid == '3'){?>
-                  <option value="1">Admin</option>
-                  <option value="2">Editor</option>
-                  <option value="3" selected='selected'>User only</option>
-
+                  <option value="2" selected='selected'>User</option>
 
                 <?php } ?>
 
@@ -98,24 +83,24 @@ if (isset($updateUser)) {
               </div>
 
           <?php }else{?>
-            <input type="hidden" name="roleid" value="<?php echo $getUinfo->roleid; ?>">
+            <input type="hidden" name="role_id" value="<?php echo $getUinfo->role_id; ?>">
           <?php } ?>
 
-              <?php if (Session::get("id") == $getUinfo->id) {?>
+              <?php if (Session::get("user_id") == $getUinfo->user_id) {?>
 
 
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>
-                <a class="btn btn-primary" href="changepass.php?id=<?php echo $getUinfo->id;?>">Password change</a>
+                <a class="btn btn-primary" href="changepass.php?id=<?php echo $getUinfo->user_id;?>">Password change</a>
               </div>
-            <?php } elseif(Session::get("roleid") == '1') {?>
+            <?php } elseif(Session::get("role_id") == '1') {?>
 
 
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>
-                <a class="btn btn-primary" href="changepass.php?id=<?php echo $getUinfo->id;?>">Password change</a>
+                <a class="btn btn-primary" href="changepass.php?id=<?php echo $getUinfo->user_id;?>">Password change</a>
               </div>
-            <?php } elseif(Session::get("roleid") == '2') {?>
+            <?php } elseif(Session::get("role_id") == '2') {?>
 
 
               <div class="form-group">

@@ -4,15 +4,15 @@ Session::CheckSession();
  ?>
  <?php
 
- if (isset($_GET['id'])) {
-   $userid = (int)$_GET['id'];
+ if (isset($_GET['user_id'])) {
+   $user_id = (int)$_GET['user_id'];
 
  }
 
 
 
  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['changepass'])) {
-    $changePass = $users->changePasswordBysingelUserId($userid, $_POST);
+    $changePass = $users->changePasswordBysingelUserId($user_id, $_POST);
  }
 
 

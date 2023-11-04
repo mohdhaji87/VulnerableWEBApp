@@ -43,7 +43,7 @@ class Image implements \ArrayAccess
     /**
      * @var string The folder or image storage storage
      */
-    protected $storage = './avatars';
+    protected $storage;
 
     /**
      * @var array The min and max image size allowed for upload (in bytes)

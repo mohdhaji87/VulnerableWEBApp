@@ -1,7 +1,4 @@
 <div class="well card-footer">
-  <p>Webiste: https://codeceil.com/
-      <span class="float-right">Like us: https://www.facebook.com/Codeceil/</span>
-  </p>
 </div>
 
 

@@ -17,16 +17,7 @@ Reload webserver and visit webapp.
 
 ------------------ MYSQL steps ------------------
 
-CREATE DATABASE project;
-CREATE TABLE user (
-    user_id int NOT NULL AUTO_INCREMENT,
-    username TEXT,
-    password TEXT,
-    email TEXT,
-    PRIMARY KEY (user_id)
-);
-
-
+CREATE DATABASE project; CREATE TABLE user ( user_id int NOT NULL AUTO_INCREMENT, username TEXT, password TEXT, email TEXT, avatar_id TEXT, PRIMARY KEY (user_id) );
 
 
 -----------------------------------------------------------------------------------------------

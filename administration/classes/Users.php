@@ -44,7 +44,7 @@ class Users{
     $username = $data['username'];
     $password = $data['password'];
     $email = $data['email'];
-    $roleid = $data['role_id'];
+    $role_id = $data['role_id'];
 
 
     $checkEmail = $this->checkExistEmail($email);
@@ -86,7 +86,7 @@ class Users{
         return $msg;
     }else{
 
-      $sql = "INSERT INTO user(username, password, email, role_id) VALUES(:username, :password, :email, :role_id)";
+      $sql = "INSERT INTO user(username, password, email, role_id) VALUES (:username, :password, :email, :role_id)";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':username', $username);
       $stmt->bindValue(':password', SHA2($password, 256));
@@ -119,7 +119,7 @@ class Users{
     $username = $data['username'];
     $password = $data['password'];
     $email = $data['email'];
-    $roleid = $data['role_id'];
+    $role_id = $data['role_id'];
 
     $checkEmail = $this->checkExistEmail($email);
 
@@ -160,14 +160,12 @@ class Users{
         return $msg;
     }else{
 
-      $sql = "INSERT INTO user(username, password, email, role_id) VALUES(:username, :password, :email, :role_id)";
+      $sql = "INSERT INTO user(username, password, email, role_id) VALUES (:username, :password, :email, :role_id)";
       $stmt = $this->db->pdo->prepare($sql);
-      $stmt->bindValue(':name', $name);
       $stmt->bindValue(':username', $username);
+      $stmt->bindValue(':password', SHA2($password,256));
       $stmt->bindValue(':email', $email);
-      $stmt->bindValue(':password', SHA1($password));
-      $stmt->bindValue(':mobile', $mobile);
-      $stmt->bindValue(':roleid', $roleid);
+      $stmt->bindValue(':role_id', $role_id);
       $result = $stmt->execute();
       if ($result) {
         $msg = '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
@@ -195,7 +193,7 @@ class Users{
 
   // Select All User Method
   public function selectAllUserData(){
-    $sql = "SELECT * FROM tbl_users ORDER BY id DESC";
+    $sql = "SELECT * FROM user ORDER BY user_id DESC";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -204,8 +202,8 @@ class Users{
 
   // User login Autho Method
   public function userLoginAutho($email, $password){
-    $password = SHA1($password);
-    $sql = "SELECT * FROM tbl_users WHERE email = :email and password = :password LIMIT 1";
+    $password = SHA2($password, 256);
+    $sql = "SELECT * FROM user WHERE email = :email and password = :password LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':password', $password);
@@ -214,7 +212,7 @@ class Users{
   }
   // Check User Account Satatus
   public function CheckActiveUser($email){
-    $sql = "SELECT * FROM tbl_users WHERE email = :email and isActive = :isActive LIMIT 1";
+    $sql = "SELECT * FROM user WHERE email = :email and isActive = :isActive LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':isActive', 1);
@@ -238,7 +236,6 @@ class Users{
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Error !</strong> Email or Password not be Empty !</div>';
           return $msg;
-
       }elseif (filter_var($email, FILTER_VALIDATE_EMAIL === FALSE)) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -264,11 +261,10 @@ class Users{
 
           Session::init();
           Session::set('login', TRUE);
-          Session::set('id', $logResult->id);
-          Session::set('roleid', $logResult->roleid);
-          Session::set('name', $logResult->name);
-          Session::set('email', $logResult->email);
+          Session::set('user_id', $logResult->user_id);
+          Session::set('role_id', $logResult->role_id);
           Session::set('username', $logResult->username);
+          Session::set('email', $logResult->email);
           Session::set('logMsg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Success !</strong> You are Logged In Successfully !</div>');
@@ -289,10 +285,10 @@ class Users{
 
 
     // Get Single User Information By Id Method
-    public function getUserInfoById($userid){
-      $sql = "SELECT * FROM tbl_users WHERE id = :id LIMIT 1";
+    public function getUserInfoById($user_id){
+      $sql = "SELECT * FROM user WHERE user_id = :user_id LIMIT 1";
       $stmt = $this->db->pdo->prepare($sql);
-      $stmt->bindValue(':id', $userid);
+      $stmt->bindValue(':user_id', $user_id);
       $stmt->execute();
       $result = $stmt->fetch(PDO::FETCH_OBJ);
       if ($result) {
@@ -308,16 +304,14 @@ class Users{
 
   //
   //   Get Single User Information By Id Method
-    public function updateUserByIdInfo($userid, $data){
-      $name = $data['name'];
+    public function updateUserByIdInfo($user_id, $data){
       $username = $data['username'];
       $email = $data['email'];
-      $mobile = $data['mobile'];
-      $roleid = $data['roleid'];
+      $role_id = $data['role_id'];
 
 
 
-      if ($name == "" || $username == ""|| $email == "" || $mobile == ""  ) {
+      if ($username == ""|| $email == "") {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Error !</strong> Input Fields must not be Empty !</div>';
@@ -327,12 +321,6 @@ class Users{
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Error !</strong> Username is too short, at least 3 Characters !</div>';
             return $msg;
-        }elseif (filter_var($mobile,FILTER_SANITIZE_NUMBER_INT) == FALSE) {
-          $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error !</strong> Enter only Number Characters for Mobile number field !</div>';
-            return $msg;
-
 
       }elseif (filter_var($email, FILTER_VALIDATE_EMAIL === FALSE)) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
@@ -341,20 +329,16 @@ class Users{
           return $msg;
       }else{
 
-        $sql = "UPDATE tbl_users SET
-          name = :name,
+        $sql = "UPDATE user SET
           username = :username,
           email = :email,
-          mobile = :mobile,
-          roleid = :roleid
-          WHERE id = :id";
+          role_id = :role_id
+          WHERE user_id = :user_id";
           $stmt= $this->db->pdo->prepare($sql);
-          $stmt->bindValue(':name', $name);
           $stmt->bindValue(':username', $username);
           $stmt->bindValue(':email', $email);
-          $stmt->bindValue(':mobile', $mobile);
-          $stmt->bindValue(':roleid', $roleid);
-          $stmt->bindValue(':id', $userid);
+          $stmt->bindValue(':role_id', $role_id);
+          $stmt->bindValue(':user_id', $user_id);
         $result =   $stmt->execute();
 
         if ($result) {
@@ -385,9 +369,9 @@ class Users{
 
     // Delete User by Id Method
     public function deleteUserById($remove){
-      $sql = "DELETE FROM tbl_users WHERE id = :id ";
+      $sql = "DELETE FROM user WHERE user_id = :user_id ";
       $stmt = $this->db->pdo->prepare($sql);
-      $stmt->bindValue(':id', $remove);
+      $stmt->bindValue(':user_id', $remove);
         $result =$stmt->execute();
         if ($result) {
           $msg = '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
@@ -404,14 +388,14 @@ class Users{
 
     // User Deactivated By Admin
     public function userDeactiveByAdmin($deactive){
-      $sql = "UPDATE tbl_users SET
+      $sql = "UPDATE user SET
 
        isActive=:isActive
-       WHERE id = :id";
+       WHERE user_id = :user_id";
 
        $stmt = $this->db->pdo->prepare($sql);
        $stmt->bindValue(':isActive', 1);
-       $stmt->bindValue(':id', $deactive);
+       $stmt->bindValue(':user_id', $deactive);
        $result =   $stmt->execute();
         if ($result) {
           echo "<script>location.href='index.php';</script>";
@@ -432,13 +416,13 @@ class Users{
 
     // User Deactivated By Admin
     public function userActiveByAdmin($active){
-      $sql = "UPDATE tbl_users SET
+      $sql = "UPDATE user SET
        isActive=:isActive
-       WHERE id = :id";
+       WHERE user_id = :user_id";
 
        $stmt = $this->db->pdo->prepare($sql);
        $stmt->bindValue(':isActive', 0);
-       $stmt->bindValue(':id', $active);
+       $stmt->bindValue(':user_id', $active);
        $result =   $stmt->execute();
         if ($result) {
           echo "<script>location.href='index.php';</script>";
@@ -457,12 +441,12 @@ class Users{
 
 
     // Check Old password method
-    public function CheckOldPassword($userid, $old_pass){
-      $old_pass = SHA1($old_pass);
-      $sql = "SELECT password FROM tbl_users WHERE password = :password AND id =:id";
+    public function CheckOldPassword($user_id, $old_pass){
+      $old_pass = SHA2($old_pass, 256);
+      $sql = "SELECT password FROM user WHERE password = :password AND user_id =:user_id";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':password', $old_pass);
-      $stmt->bindValue(':id', $userid);
+      $stmt->bindValue(':user_id', $user_id);
       $stmt->execute();
       if ($stmt->rowCount() > 0) {
         return true;
@@ -474,7 +458,7 @@ class Users{
 
 
     // Change User pass By Id
-    public  function changePasswordBysingelUserId($userid, $data){
+    public  function changePasswordBysingelUserId($user_id, $data){
 
       $old_pass = $data['old_password'];
       $new_pass = $data['new_password'];
@@ -492,22 +476,22 @@ class Users{
           return $msg;
        }
 
-         $oldPass = $this->CheckOldPassword($userid, $old_pass);
+         $oldPass = $this->CheckOldPassword($user_id, $old_pass);
          if ($oldPass == FALSE) {
            $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
      <strong>Error !</strong> Old password did not Matched !</div>';
              return $msg;
          }else{
-           $new_pass = SHA1($new_pass);
-           $sql = "UPDATE tbl_users SET
+           $new_pass = SHA2($new_pass, 256);
+           $sql = "UPDATE user SET
 
             password=:password
-            WHERE id = :id";
+            WHERE user_id = :user_id";
 
             $stmt = $this->db->pdo->prepare($sql);
             $stmt->bindValue(':password', $new_pass);
-            $stmt->bindValue(':id', $userid);
+            $stmt->bindValue(':user_id', $user_id);
             $result =   $stmt->execute();
 
           if ($result) {

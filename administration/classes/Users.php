@@ -14,16 +14,7 @@ class Users{
   public function __construct(){
     $this->db = new Database();
   }
-
-  // Date formate Method
-   public function formatDate($date){
-     // date_default_timezone_set('Asia/Dhaka');
-      $strtime = strtotime($date);
-    return date('Y-m-d H:i:s', $strtime);
-   }
-
-
-
+  
   // Check Exist Email Address Method
   public function checkExistEmail($email){
     $sql = "SELECT email from user WHERE email = :email";
@@ -74,7 +65,7 @@ class Users{
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 <strong>Error !</strong> Your Password Must Contain At Least 1 Number !</div>';
         return $msg;
-    }elseif (filter_var($email, FILTER_VALIDATE_EMAIL === FALSE)) {
+    }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 <strong>Error !</strong> Invalid email address !</div>';
@@ -148,7 +139,7 @@ class Users{
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 <strong>Error !</strong> Your Password Must Contain At Least 1 Number !</div>';
         return $msg;
-    }elseif (filter_var($email, FILTER_VALIDATE_EMAIL === FALSE)) {
+    }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 <strong>Error !</strong> Invalid email address !</div>';
@@ -236,7 +227,7 @@ class Users{
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Error !</strong> Email or Password not be Empty !</div>';
           return $msg;
-      }elseif (filter_var($email, FILTER_VALIDATE_EMAIL === FALSE)) {
+      }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Error !</strong> Invalid email address !</div>';
@@ -322,7 +313,7 @@ class Users{
     <strong>Error !</strong> Username is too short, at least 3 Characters !</div>';
             return $msg;
 
-      }elseif (filter_var($email, FILTER_VALIDATE_EMAIL === FALSE)) {
+      }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Error !</strong> Invalid email address !</div>';

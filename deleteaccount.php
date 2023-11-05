@@ -6,7 +6,7 @@ session_start();
 //get post parameters
 
 $user=$_POST['username'];
-$old=$_POST['oldpassword'];
+$old=sha1($_POST['oldpassword']);
 
 
 //check session else redirect to login 

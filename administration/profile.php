@@ -91,14 +91,14 @@ if (isset($updateUser)) {
 
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>
-                <a class="btn btn-primary" href="changepass.php?id=<?php echo $getUinfo->user_id;?>">Password change</a>
+                <a class="btn btn-primary" href="changepass.php?user_id=<?php echo $getUinfo->user_id;?>">Password change</a>
               </div>
             <?php } elseif(Session::get("role_id") == '1') {?>
 
 
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>
-                <a class="btn btn-primary" href="changepass.php?id=<?php echo $getUinfo->user_id;?>">Password change</a>
+                <a class="btn btn-primary" href="changepass.php?user_id=<?php echo $getUinfo->user_id;?>">Password change</a>
               </div>
             <?php } elseif(Session::get("role_id") == '2') {?>
 

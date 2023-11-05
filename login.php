@@ -12,7 +12,7 @@ include("config.php");
 session_start();
 //get user input
 $a=$_POST['username'];
-$b=$_POST['password'];
+$b=sha1($_POST['password']);
 $query = "select * from user where username='$a' AND password='$b'";
 
 $result=mysqli_query($db, $query) or die('Error querying database.');

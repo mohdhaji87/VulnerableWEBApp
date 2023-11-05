@@ -59,8 +59,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
 
 
-          <?php if (Session::get('id') == TRUE) { ?>
-            <?php if (Session::get('roleid') == '1') { ?>
+          <?php if (Session::get('user_id') == TRUE) { ?>
+            <?php if (Session::get('role_id') == '1') { ?>
               <li class="nav-item">
 
                   <a class="nav-link" href="index.php"><i class="fas fa-users mr-2"></i>User lists </span></a>
@@ -93,7 +93,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
             ">
 
-              <a class="nav-link" href="profile.php?id=<?php echo Session::get("id"); ?>"><i class="fab fa-500px mr-2"></i>Profile <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="profile.php?id=<?php echo Session::get("user_id"); ?>"><i class="fab fa-500px mr-2"></i>Profile <span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item">

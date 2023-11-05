@@ -105,8 +105,8 @@ if (isset($username)) {
                         <td>
                           <?php if ( Session::get("role_id") == '1') {?>
                             <a class="btn btn-success btn-sm
-                            " href="profile.php?id=<?php echo $value->user_id;?>">View</a>
-                            <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->user_id;?>">Edit</a>
+                            " href="profile.php?user_id=<?php echo $value->user_id;?>">View</a>
+                            <a class="btn btn-info btn-sm " href="profile.php?user_id=<?php echo $value->user_id;?>">Edit</a>
                             <a onclick="return confirm('Are you sure To Delete ?')" class="btn btn-danger
                     <?php if (Session::get("user_id") == $value->user_id) {
                       echo "disabled";
@@ -131,15 +131,15 @@ if (isset($username)) {
 
 
                         <?php  }elseif(Session::get("user_id") == $value->user_id  && Session::get("role_id") == '1'){ ?>
-                          <a class="btn btn-success btn-sm " href="profile.php?id=<?php echo $value->user_id;?>">View</a>
-                          <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->user_id;?>">Edit</a>
+                          <a class="btn btn-success btn-sm " href="profile.php?user_id=<?php echo $value->user_id;?>">View</a>
+                          <a class="btn btn-info btn-sm " href="profile.php?user_id=<?php echo $value->user_id;?>">Edit</a>
 
                         <?php }elseif(Session::get("user_id") == $value->user_id  && Session::get("role_id") == '2'){ ?>
-                          <a class="btn btn-success btn-sm " href="profile.php?id=<?php echo $value->user_id;?>">View</a>
-                          <a class="btn btn-info btn-sm " href="profile.php?id=<?php echo $value->user_id;?>">Edit</a>
+                          <a class="btn btn-success btn-sm " href="profile.php?user_id=<?php echo $value->user_id;?>">View</a>
+                          <a class="btn btn-info btn-sm " href="profile.php?user_id=<?php echo $value->user_id;?>">Edit</a>
                         <?php }else{ ?>
                           <a class="btn btn-success btn-sm
-                          " href="profile.php?id=<?php echo $value->user_id;?>">View</a>
+                          " href="profile.php?user_id=<?php echo $value->user_id;?>">View</a>
 
                         <?php } ?>
 

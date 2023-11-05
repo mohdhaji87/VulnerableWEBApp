@@ -5,8 +5,8 @@ session_start();
 //get post parameters
 
 $user=$_POST['username'];
-$old=$_POST['oldpassword'];
-$new=$_POST['newpassword'];
+$old=sha1($_POST['oldpassword']);
+$new=sha1($_POST['newpassword']);
 
 
 //check session else redirect to login page

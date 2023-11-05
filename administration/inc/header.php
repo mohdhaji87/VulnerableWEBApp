@@ -93,7 +93,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
             ">
 
-              <a class="nav-link" href="profile.php?id=<?php echo Session::get("user_id"); ?>"><i class="fab fa-500px mr-2"></i>Profile <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="profile.php?user_id=<?php echo Session::get("user_id"); ?>"><i class="fab fa-500px mr-2"></i>Profile <span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item">

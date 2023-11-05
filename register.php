@@ -13,7 +13,7 @@ include("config.php");
 $a=$_POST['username'];
 $b=$_POST['password'];
 $c=$_POST['email'];
-$query = "insert into user (username, password, email) values ('$a','$b','$c')";
+$query = "insert into user (username, password, email) values ('$a', sha1('$b'),'$c')";
 
 echo "" . '<br />';
 

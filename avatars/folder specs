@@ -1,0 +1,3 @@
+chown -R www-data:www-data ../avatars/
+chmod -R 0666 ../avatars/
+chmod 755 ../avatars/

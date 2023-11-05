@@ -89,7 +89,7 @@ class Users{
       $sql = "INSERT INTO user(username, password, email, role_id) VALUES (:username, :password, :email, :role_id)";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':username', $username);
-      $stmt->bindValue(':password', SHA2($password, 256));
+      $stmt->bindValue(':password', SHA1($password));
       $stmt->bindValue(':email', $email);
       $stmt->bindValue(':role_id', $role_id);
       $result = $stmt->execute();
@@ -163,7 +163,7 @@ class Users{
       $sql = "INSERT INTO user(username, password, email, role_id) VALUES (:username, :password, :email, :role_id)";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':username', $username);
-      $stmt->bindValue(':password', SHA2($password,256));
+      $stmt->bindValue(':password', SHA1($password));
       $stmt->bindValue(':email', $email);
       $stmt->bindValue(':role_id', $role_id);
       $result = $stmt->execute();
@@ -202,7 +202,7 @@ class Users{
 
   // User login Autho Method
   public function userLoginAutho($email, $password){
-    $password = SHA2($password, 256);
+    $password = SHA1($password);
     $sql = "SELECT * FROM user WHERE email = :email and password = :password LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
@@ -442,7 +442,7 @@ class Users{
 
     // Check Old password method
     public function CheckOldPassword($user_id, $old_pass){
-      $old_pass = SHA2($old_pass, 256);
+      $old_pass = SHA1($old_pass);
       $sql = "SELECT password FROM user WHERE password = :password AND user_id =:user_id";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':password', $old_pass);
@@ -483,7 +483,7 @@ class Users{
      <strong>Error !</strong> Old password did not Matched !</div>';
              return $msg;
          }else{
-           $new_pass = SHA2($new_pass, 256);
+           $new_pass = SHA1($new_pass);
            $sql = "UPDATE user SET
 
             password=:password

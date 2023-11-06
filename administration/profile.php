@@ -48,7 +48,7 @@ if (isset($updateUser)) {
           <form class="" action="" method="POST">
               <div class="form-group">
                 <label for="avatar">Avatar</label>
-                <img src="../avatars/<?php echo $getUinfo->avatar_id; ?>" >
+                <p><img src="../avatars/<?php echo $getUinfo->avatar_id; ?>" ></p>
               </div>
               <div class="form-group">
                 <label for="username">Username</label>

@@ -93,8 +93,6 @@ if (isset($updateUser)) {
               <p>
               <img src="<?php if ($upload) { echo $upload->getPath(); } ?>">
               </p>
-
-               
               </div>
               <div class="form-group">
                 <label for="username">Username</label>

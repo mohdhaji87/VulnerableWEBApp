@@ -33,7 +33,6 @@ class Users{
     $username = $data['username'];
     $password = $data['password'];
     $email = $data['email'];
-    $role_id = $data['role_id'];
 
     $checkEmail = $this->checkExistsEmail($email);
 
@@ -65,7 +64,7 @@ class Users{
     }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-<strong>Error !</strong> Invalid email address !</div>';
+<strong>Error !</strong> Invalid email address!</div>';
         return $msg;
     }elseif ($checkEmail == TRUE) {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
@@ -74,12 +73,11 @@ class Users{
         return $msg;
     }else{
 
-      $sql = "INSERT INTO user (username, password, email, role_id) VALUES (:username, :password, :email, :role_id)";
+      $sql = "INSERT INTO user (username, password, email) VALUES (:username, :password, :email";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':username', $username);
       $stmt->bindValue(':password', SHA1($password));
       $stmt->bindValue(':email', $email);
-      $stmt->bindValue(':role_id', $role_id);
       $result = $stmt->execute();
       if ($result) {
         $msg = '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
@@ -237,8 +235,6 @@ class Users{
       $email = $data['email'];
       $role_id = $data['role_id'];
       $avatar_id = $data['avatar_id'];
-
-
 
       if ($username == ""|| $email == "") {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">

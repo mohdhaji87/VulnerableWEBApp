@@ -63,7 +63,7 @@ if (isset($updateUser)) {
               } ?>
               ">
                 <div class="form-group">
-                  <label for="sel1">Select user Role</label>
+                  <label for="sel1">Select user role</label>
                   <select class="form-control" name="role_id" id="role_id">
 
                   <?php

@@ -97,18 +97,6 @@ Old Password : <input type="text" name="oldpassword" value="" > </br>
 <input type="submit" name="update" value="update">
 </form>
 
-<h2> Ping website </h2>
-<form action="pingurl.php" method="POST">
-Enter Url : <input text="text" name="url" value=""></br>
-<input type="submit" name="submit" value="ping">
-</form>
-</br>
-
-
-</br>
-<h2 > Terms of Service </h2>
-<a href="tos.php?file=service.html" >Click here </a>
-
 </br>
 </br>
 </br>

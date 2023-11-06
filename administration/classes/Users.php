@@ -191,8 +191,8 @@ class Users{
   }
 
 
-  // User login Autho Method
-  public function userLoginAutho($email, $password){
+  // User login info method
+  public function userLoginInfo($email, $password){
     $password = SHA1($password);
     $sql = "SELECT * FROM user WHERE email = :email and password = :password LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
@@ -201,12 +201,12 @@ class Users{
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_OBJ);
   }
-  // Check User Account Satatus
-  public function CheckActiveUser($email){
-    $sql = "SELECT * FROM user WHERE email = :email and isActive = :isActive LIMIT 1";
+  // Check User Account status
+  public function CheckDisabledUser($email){
+    $sql = "SELECT * FROM user WHERE email = :email and isEnabled = :isEnabled LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
-    $stmt->bindValue(':isActive', 1);
+    $stmt->bindValue(':isEnabled', 0);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_OBJ);
   }
@@ -215,7 +215,7 @@ class Users{
 
 
     // User Login Authotication Method
-    public function userLoginAuthotication($data){
+    public function userAuthentication($data){
       $email = $data['email'];
       $password = $data['password'];
 
@@ -225,28 +225,28 @@ class Users{
       if ($email == "" || $password == "" ) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Error !</strong> Email or Password not be Empty !</div>';
+  <strong>Error !</strong> Email or password cannot be empty!</div>';
           return $msg;
       }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Error !</strong> Invalid email address !</div>';
+  <strong>Error !</strong> Invalid email address!</div>';
           return $msg;
       }elseif ($checkEmail == FALSE) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Error !</strong> Email did not Found, use Register email or password please !</div>';
+  <strong>Error !</strong> Email account not found!</div>';
           return $msg;
       }else{
 
 
-        $logResult = $this->userLoginAutho($email, $password);
-        $chkActive = $this->CheckActiveUser($email);
+        $logResult = $this->userLoginInfo($email, $password);
+        $chkDisabled = $this->CheckDisabledUser($email);
 
-        if ($chkActive == TRUE) {
+        if ($chkDisabled == TRUE) {
           $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error !</strong> Sorry, Your account is Diactivated, Contact with Admin !</div>';
+    <strong>Error !</strong> Sorry, your account is disabled, contact Admin!</div>';
             return $msg;
         }elseif ($logResult) {
 
@@ -258,13 +258,13 @@ class Users{
           Session::set('email', $logResult->email);
           Session::set('logMsg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> You are Logged In Successfully !</div>');
+    <strong>Success !</strong> You are logged in successfully!</div>');
           echo "<script>location.href='index.php';</script>";
 
         }else{
           $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error !</strong> Email or Password did not Matched !</div>';
+    <strong>Error !</strong> Email or password did not match!</div>';
             return $msg;
         }
 
@@ -336,7 +336,7 @@ class Users{
           echo "<script>location.href='index.php';</script>";
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Success !</strong> Wow, Your Information updated Successfully !</div>');
+          <strong>Success !</strong> Your information was updated successfully!</div>');
 
 
 
@@ -344,7 +344,7 @@ class Users{
           echo "<script>location.href='index.php';</script>";
           Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error !</strong> Data not inserted !</div>');
+    <strong>Error !</strong> Data not inserted!</div>');
 
 
         }
@@ -381,11 +381,11 @@ class Users{
     public function userDisableByAdmin($disable){
       $sql = "UPDATE user SET
 
-       isActive=:isActive
+       isEnabled=:isEnabled
        WHERE user_id = :user_id";
 
        $stmt = $this->db->pdo->prepare($sql);
-       $stmt->bindValue(':isActive', 1);
+       $stmt->bindValue(':isEnabled', 0);
        $stmt->bindValue(':user_id', $disable);
        $result =   $stmt->execute();
         if ($result) {
@@ -408,11 +408,11 @@ class Users{
     // User Enabled By Admin
     public function userEnableByAdmin($enable){
       $sql = "UPDATE user SET
-       isActive=:isActive
+       isEnabled=:isEnabled
        WHERE user_id = :user_id";
 
        $stmt = $this->db->pdo->prepare($sql);
-       $stmt->bindValue(':isActive', 0);
+       $stmt->bindValue(':isEnabled', 1);
        $stmt->bindValue(':user_id', $enable);
        $result =   $stmt->execute();
         if ($result) {
@@ -449,7 +449,7 @@ class Users{
 
 
     // Change User pass By Id
-    public  function changePasswordBysingelUserId($user_id, $data){
+    public  function changePasswordBysingleUserId($user_id, $data){
 
       $old_pass = $data['old_password'];
       $new_pass = $data['new_password'];
@@ -463,7 +463,7 @@ class Users{
       }elseif (strlen($new_pass) < 6) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Error !</strong> New password must be at least 6 character !</div>';
+  <strong>Error !</strong> New password must be at least 6 characters !</div>';
           return $msg;
        }
 

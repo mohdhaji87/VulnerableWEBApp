@@ -15,8 +15,8 @@ class Users{
     $this->db = new Database();
   }
   
-  // Check Exist Email Address Method
-  public function checkExistEmail($email){
+  // Check Exists Email Address Method
+  public function checkExistsEmail($email){
     $sql = "SELECT email from user WHERE email = :email";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
@@ -38,7 +38,7 @@ class Users{
     $role_id = $data['role_id'];
 
 
-    $checkEmail = $this->checkExistEmail($email);
+    $checkEmail = $this->checkExistsEmail($email);
 
     if ($username == "" || $password == "" || $email == "" ) {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
@@ -112,7 +112,7 @@ class Users{
     $email = $data['email'];
     $role_id = $data['role_id'];
 
-    $checkEmail = $this->checkExistEmail($email);
+    $checkEmail = $this->checkExistsEmail($email);
 
     if ($username == "" || $password == "" || $email == "") {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
@@ -220,7 +220,7 @@ class Users{
       $password = $data['password'];
 
 
-      $checkEmail = $this->checkExistEmail($email);
+      $checkEmail = $this->checkExistsEmail($email);
 
       if ($email == "" || $password == "" ) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">

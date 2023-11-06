@@ -359,20 +359,20 @@ class Users{
 
 
     // Delete User by Id Method
-    public function deleteUserById($remove){
+    public function deleteUserById($delete){
       $sql = "DELETE FROM user WHERE user_id = :user_id ";
       $stmt = $this->db->pdo->prepare($sql);
-      $stmt->bindValue(':user_id', $remove);
+      $stmt->bindValue(':user_id', $delete);
         $result =$stmt->execute();
         if ($result) {
           $msg = '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> User account Deleted Successfully !</div>';
+    <strong>Success !</strong> User account deleted successfully!</div>';
             return $msg;
         }else{
           $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error !</strong> Data not Deleted !</div>';
+    <strong>Error !</strong> Data not deleted!</div>';
             return $msg;
         }
     }

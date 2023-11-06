@@ -17,35 +17,35 @@ Session::set("logMsg", NULL);
 <?php
 
 if (isset($_GET['delete'])) {
-  $remove = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['delete']);
-  $removeUser = $users->deleteUserById($delete);
+  $delete = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['delete']);
+  $deleteUser = $users->deleteUserById($delete);
 }
 
 if (isset($deleteUser)) {
   echo $deleteUser;
 }
-if (isset($_GET['deactive'])) {
-  $deactive = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['deactive']);
-  $deactiveId = $users->userDeactiveByAdmin($deactive);
+if (isset($_GET['disable'])) {
+  $disable = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['disable']);
+  $disableId = $users->userDisableByAdmin($disable);
 }
 
-if (isset($deactiveId)) {
-  echo $deactiveId;
+if (isset($disableId)) {
+  echo $disableId;
 }
-if (isset($_GET['active'])) {
-  $active = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['active']);
-  $activeId = $users->userActiveByAdmin($active);
+if (isset($_GET['enable'])) {
+  $enable = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['enable']);
+  $enableId = $users->userEnableByAdmin($enable);
 }
 
-if (isset($activeId)) {
-  echo $activeId;
+if (isset($enableId)) {
+  echo $enableId;
 }
 
 
  ?>
       <div class="card ">
         <div class="card-header">
-          <h3><i class="fas fa-users mr-2"></i>User list <span class="float-right">Welcome! <strong>
+          <h3><i class="fas fa-users mr-2"></i>Userlist <span class="float-right">Welcome! <strong>
             <span class="badge badge-lg badge-secondary text-white">
 <?php
 $username = Session::get('username');

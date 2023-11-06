@@ -149,7 +149,7 @@ class Users{
     $stmt->execute();
     $test2 = $stmt->fetch(PDO::FETCH_OBJ);
     if ($test1 && $test2) {
-      return TRUE;
+      return true;
     }
   }
 
@@ -195,7 +195,7 @@ class Users{
           Session::set('email', $loginResult->email);
           Session::set('logMsg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success !</strong> You are logged in successfully!</div>');
+    <strong>Success !</strong> You are logged in successfully as administrator!</div>');
           echo "<script>location.href='index.php';</script>";
 
         }else{

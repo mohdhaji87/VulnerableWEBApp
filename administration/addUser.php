@@ -42,15 +42,6 @@ if (isset($userAdd)) {
                   <input type="password" name="password" class="form-control">
                 </div>
                 <div class="form-group">
-                  <div class="form-group">
-                    <label for="sel1">Select user Role</label>
-                    <select class="form-control" name="role_id" id="role_id">
-                      <option value="1">Admin</option>
-                      <option value="2">User</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
                   <button type="submit" name="addUser" class="btn btn-success">Register</button>
                 </div>
 

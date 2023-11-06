@@ -55,31 +55,14 @@ if (isset($updateUser)) {
                 <input type="email" id="email" name="email" value="<?php echo $getUinfo->email; ?>" class="form-control">
               </div>
 
-              <?php if (Session::get("role_id") == '1') { ?>
+           <?php if (Session::get("role_id") == '1') { ?>
 
               <div class="form-group
               <?php if (Session::get("role_id") == '1' && Session::get("user_id") == $getUinfo->user_id) {
                 echo "d-none";
               } ?>
               ">
-                <div class="form-group">
-                  <label for="sel1">Select user role</label>
-                  <select class="form-control" name="role_id" id="role_id">
 
-                  <?php
-
-                if($getUinfo->role_id == '1'){?>
-                  <option value="1" selected='selected'>Admin</option>
-                  <option value="2">User</option>
-                <?php }elseif($getUinfo->role_id == '2'){?>
-                  <option value="1">Admin</option>
-                  <option value="2" selected='selected'>User</option>
-
-                <?php } ?>
-
-
-                  </select>
-                </div>
               </div>
 
           <?php }else{?>
@@ -94,14 +77,6 @@ if (isset($updateUser)) {
                 <a class="btn btn-primary" href="changepass.php?user_id=<?php echo $getUinfo->user_id;?>">Password change</a>
               </div>
             <?php } elseif(Session::get("role_id") == '1') {?>
-
-
-              <div class="form-group">
-                <button type="submit" name="update" class="btn btn-success">Update</button>
-                <a class="btn btn-primary" href="changepass.php?user_id=<?php echo $getUinfo->user_id;?>">Password change</a>
-              </div>
-            <?php } elseif(Session::get("role_id") == '2') {?>
-
 
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>

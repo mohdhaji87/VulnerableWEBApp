@@ -61,7 +61,7 @@ if (isset($username)) {
           <table id="example" class="table table-striped table-bordered" style="width:100%">
                   <thead>
                     <tr>
-                      <th  class="text-center">SL</th>
+                      <th  class="text-center">#</th>
                       <th  class="text-center">Username</th>
                       <th  class="text-center">Email address</th>
                       <th  class="text-center">Status</th>
@@ -104,39 +104,26 @@ if (isset($username)) {
 
                         <td>
                           <?php if ( Session::get("role_id") == '1') {?>
-                            <a class="btn btn-success btn-sm
-                            " href="profile.php?user_id=<?php echo $value->user_id;?>">View</a>
                             <a class="btn btn-info btn-sm " href="profile.php?user_id=<?php echo $value->user_id;?>">Edit</a>
-                            <a onclick="return confirm('Are you sure To Delete ?')" class="btn btn-danger
+                            <a onclick="return confirm('Are you sure you wish to delete this user?')" class="btn btn-danger
                     <?php if (Session::get("user_id") == $value->user_id) {
-                      echo "disabled";
+                      echo "deleted";
                     } ?>
-                             btn-sm " href="?remove=<?php echo $value->user_id;?>">Remove</a>
+                             btn-sm " href="?delete=<?php echo $value->user_id;?>">Delete</a>
 
                              <?php if ($value->isActive == '0') {  ?>
-                               <a onclick="return confirm('Are you sure To Deactive ?')" class="btn btn-warning
+                               <a onclick="return confirm('Are you sure you wish to disable this user?')" class="btn btn-warning
                        <?php if (Session::get("user_id") == $value->user_id) {
                          echo "disabled";
                        } ?>
-                                btn-sm " href="?deactive=<?php echo $value->user_id;?>">Disable</a>
+                                btn-sm " href="?disable=<?php echo $value->user_id;?>">Disable</a>
                              <?php } elseif($value->isActive == '1'){?>
-                               <a onclick="return confirm('Are you sure To Active ?')" class="btn btn-secondary
+                               <a onclick="return confirm('Are you sure you wish to enable this user?')" class="btn btn-secondary
                        <?php if (Session::get("user_id") == $value->user_id) {
-                         echo "disabled";
+                         echo "enabled";
                        } ?>
-                                btn-sm " href="?active=<?php echo $value->user_id;?>">Active</a>
+                                btn-sm " href="?enable=<?php echo $value->user_id;?>">Enable</a>
                              <?php } ?>
-
-
-
-
-                        <?php  }elseif(Session::get("user_id") == $value->user_id  && Session::get("role_id") == '1'){ ?>
-                          <a class="btn btn-success btn-sm " href="profile.php?user_id=<?php echo $value->user_id;?>">View</a>
-                          <a class="btn btn-info btn-sm " href="profile.php?user_id=<?php echo $value->user_id;?>">Edit</a>
-
-                        <?php }elseif(Session::get("user_id") == $value->user_id  && Session::get("role_id") == '2'){ ?>
-                          <a class="btn btn-success btn-sm " href="profile.php?user_id=<?php echo $value->user_id;?>">View</a>
-                          <a class="btn btn-info btn-sm " href="profile.php?user_id=<?php echo $value->user_id;?>">Edit</a>
                         <?php }else{ ?>
                           <a class="btn btn-success btn-sm
                           " href="profile.php?user_id=<?php echo $value->user_id;?>">View</a>

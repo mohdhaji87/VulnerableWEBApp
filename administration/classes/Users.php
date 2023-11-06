@@ -124,12 +124,22 @@ class Users{
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_OBJ);
   }
-  // Check User Account status
+  // Check User Account enabled status
   public function CheckEnabledUser($email){
     $sql = "SELECT * FROM user WHERE email = :email and isEnabled = :isEnabled LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':isEnabled', 1);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_OBJ);
+  }
+
+    // Check User Account admin status
+  public function CheckAdminUser($email){
+    $sql = "SELECT * FROM user WHERE email = :email and role_id = :role_id LIMIT 1";
+    $stmt = $this->db->pdo->prepare($sql);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':role_id', 1);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_OBJ);
   }

@@ -13,7 +13,7 @@ session_start();
 //get user input
 $a=$_POST['username'];
 $b=sha1($_POST['password']);
-$query = "select * from user where username='$a' AND password='$b' AND isActive='0'";
+$query = "select * from user where username='$a' AND password='$b' AND isEnabled=1";
 
 $result=mysqli_query($db, $query) or die('Error querying database.');
 

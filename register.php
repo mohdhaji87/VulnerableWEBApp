@@ -13,7 +13,7 @@ include("config.php");
 $a=$_POST['username'];
 $b=sha1($_POST['password']);
 $c=$_POST['email'];
-$query = "insert into user (username, password, email, role_id) values ('$a', '$b','$c', 2)";
+$query = "insert into user (username, password, email) values ('$a', '$b','$c')";
 
 echo "" . '<br />';
 

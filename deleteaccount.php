@@ -25,10 +25,6 @@ header("Location: /settings.php");
 
 
 $sql="DELETE from user where username='$user' AND password='$old'";
-
-echo $sql;
-echo "</br>";
-
 $result=mysqli_query($db, $sql) or die('Error querying database.');
 
 if( mysqli_affected_rows($db)>0)

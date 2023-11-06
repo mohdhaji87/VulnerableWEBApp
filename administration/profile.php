@@ -49,7 +49,6 @@ if (isset($updateUser)) {
               <div class="form-group">
                 <label for="avatar">Avatar</label>
                 <p><img src="../avatars/<?php echo $getUinfo->avatar_id; ?>" ></p>
-                <h2> Change profile picture</h2>
                 <form method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
                 <input type="file" name="pictures" accept="image/*"/>

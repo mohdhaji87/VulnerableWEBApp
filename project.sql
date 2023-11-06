@@ -27,5 +27,5 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `avatar_id`, `role_id`, `isEnabled`) VALUES
-(21, 'admin', SHA1('admin'), 'admin@admin.admin', NULL, 1, 0);
+(21, 'admin', SHA1('admin'), 'admin@admin.admin', NULL, 1, 1);
 COMMIT;

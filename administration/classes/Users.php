@@ -163,7 +163,7 @@ class Users{
       }else{
 
 
-        $logResult = $this->userLoginInfo($email, $password);
+        $loginResult = $this->userLoginInfo($email, $password);
         $chkEnabled = $this->CheckEnabledUser($email);
 
         if ($chkEnabled == FALSE) {
@@ -171,14 +171,14 @@ class Users{
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Error !</strong> Sorry, your account is disabled, contact Admin!</div>';
             return $msg;
-        }elseif ($logResult) {
+        }elseif ($loginResult) {
 
           Session::init();
           Session::set('login', TRUE);
-          Session::set('user_id', $logResult->user_id);
-          Session::set('role_id', $logResult->role_id);
-          Session::set('username', $logResult->username);
-          Session::set('email', $logResult->email);
+          Session::set('user_id', $loginResult->user_id);
+          Session::set('role_id', $loginResult->role_id);
+          Session::set('username', $loginResult->username);
+          Session::set('email', $loginResult->email);
           Session::set('logMsg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Success !</strong> You are logged in successfully!</div>');

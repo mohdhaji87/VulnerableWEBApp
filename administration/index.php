@@ -16,13 +16,13 @@ Session::set("logMsg", NULL);
 ?>
 <?php
 
-if (isset($_GET['remove'])) {
-  $remove = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['remove']);
-  $removeUser = $users->deleteUserById($remove);
+if (isset($_GET['delete'])) {
+  $remove = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['delete']);
+  $removeUser = $users->deleteUserById($delete);
 }
 
-if (isset($removeUser)) {
-  echo $removeUser;
+if (isset($deleteUser)) {
+  echo $deleteUser;
 }
 if (isset($_GET['deactive'])) {
   $deactive = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['deactive']);

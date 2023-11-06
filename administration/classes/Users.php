@@ -202,11 +202,11 @@ class Users{
     return $stmt->fetch(PDO::FETCH_OBJ);
   }
   // Check User Account status
-  public function CheckDisabledUser($email){
+  public function CheckEnabledUser($email){
     $sql = "SELECT * FROM user WHERE email = :email and isEnabled = :isEnabled LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
-    $stmt->bindValue(':isEnabled', 0);
+    $stmt->bindValue(':isEnabled', 1);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_OBJ);
   }
@@ -241,9 +241,9 @@ class Users{
 
 
         $logResult = $this->userLoginInfo($email, $password);
-        $chkDisabled = $this->CheckDisabledUser($email);
+        $chkEnabled = $this->CheckEnabledUser($email);
 
-        if ($chkDisabled == TRUE) {
+        if ($chkEnabled == FALSE) {
           $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Error !</strong> Sorry, your account is disabled, contact Admin!</div>';

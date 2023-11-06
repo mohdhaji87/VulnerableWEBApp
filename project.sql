@@ -36,6 +36,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `avatar_id`, `role_id`, `isEnabled`) VALUES
-(21, 'admin', SHA1('admin'), 'admin@admin.admin', NULL, 1, 1);
-(15, 'test', SHA1('test'), 'test@test.test', '654945ae205062.32022954_lgjqmnohkipef.jpeg', 2, 1);
+(21, 'admin', SHA1('admin'), 'admin@admin.admin', NULL, 1, 1),
+(10, 'test', SHA1('test'), 'test@test.test', '654945ae205062.32022954_lgjqmnohkipef.jpeg', 2, 1);
 COMMIT;

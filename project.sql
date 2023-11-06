@@ -22,10 +22,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) DEFAULT NULL,
   `avatar_id` varchar(255) DEFAULT NULL,
   `role_id` tinyint(4) DEFAULT '2',
-  `isActive` tinyint(4) DEFAULT '0',
+  `isEnabled` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `avatar_id`, `role_id`, `isActive`) VALUES
+INSERT INTO `user` (`user_id`, `username`, `password`, `email`, `avatar_id`, `role_id`, `isEnabled`) VALUES
 (21, 'admin', SHA1('admin'), 'admin@admin.admin', NULL, 1, 0);
 COMMIT;

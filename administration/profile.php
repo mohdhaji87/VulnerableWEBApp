@@ -81,7 +81,7 @@ if (isset($updateUser)) {
               
               if($image["pictures"]){
                 $upload = $image->upload();
-                if($upload)
+                if($upload){
                   echo "Profile picture successfully uploaded";
                   ?>
                   <p>

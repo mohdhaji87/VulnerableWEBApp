@@ -377,8 +377,8 @@ class Users{
         }
     }
 
-    // User Deactivated By Admin
-    public function userDeactiveByAdmin($deactive){
+    // User Disabled By Admin
+    public function userDisableByAdmin($disable){
       $sql = "UPDATE user SET
 
        isActive=:isActive
@@ -386,19 +386,19 @@ class Users{
 
        $stmt = $this->db->pdo->prepare($sql);
        $stmt->bindValue(':isActive', 1);
-       $stmt->bindValue(':user_id', $deactive);
+       $stmt->bindValue(':user_id', $disable);
        $result =   $stmt->execute();
         if ($result) {
           echo "<script>location.href='index.php';</script>";
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Success !</strong> User account Diactivated Successfully !</div>');
+          <strong>Success !</strong> User account disabled successfully!</div>');
 
         }else{
           echo "<script>location.href='index.php';</script>";
           Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error !</strong> Data not Diactivated !</div>');
+    <strong>Error !</strong> Data not disabled!</div>');
 
             return $msg;
         }
@@ -406,25 +406,25 @@ class Users{
 
 
     // User Deactivated By Admin
-    public function userActiveByAdmin($active){
+    public function userEnableByAdmin($enable){
       $sql = "UPDATE user SET
        isActive=:isActive
        WHERE user_id = :user_id";
 
        $stmt = $this->db->pdo->prepare($sql);
        $stmt->bindValue(':isActive', 0);
-       $stmt->bindValue(':user_id', $active);
+       $stmt->bindValue(':user_id', $enable);
        $result =   $stmt->execute();
         if ($result) {
           echo "<script>location.href='index.php';</script>";
           Session::set('msg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Success !</strong> User account activated Successfully !</div>');
+          <strong>Success !</strong> User account enabled successfully!</div>');
         }else{
           echo "<script>location.href='index.php';</script>";
           Session::set('msg', '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error !</strong> Data not activated !</div>');
+    <strong>Error !</strong> Data not enabled!</div>');
         }
     }
 

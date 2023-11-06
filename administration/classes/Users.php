@@ -405,7 +405,7 @@ class Users{
     }
 
 
-    // User Deactivated By Admin
+    // User Enabled By Admin
     public function userEnableByAdmin($enable){
       $sql = "UPDATE user SET
        isActive=:isActive

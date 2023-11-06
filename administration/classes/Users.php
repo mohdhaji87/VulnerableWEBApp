@@ -160,26 +160,21 @@ class Users{
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Error !</strong> Email or password cannot be empty!</div>';
           return $msg;
-      }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL) || $checkEmail == FALSE) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Error !</strong> Invalid email address!</div>';
           return $msg;
-      }elseif ($checkEmail == FALSE) {
-        $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
-  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Error !</strong> Email account not found!</div>';
-          return $msg;
       }else{
 
-
         $loginResult = $this->userLoginInfo($email, $password);
+        $chkAdmin = $this->CheckAdminUser($email);
         $chkEnabled = $this->CheckEnabledUser($email);
 
-        if ($chkEnabled == FALSE) {
+        if ($chkAdmin == FALSE || $chkEnabled == FALSE) {
           $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Error !</strong> Sorry, your account is disabled, contact Admin!</div>';
+    <strong>Error !</strong> Sorry, either your account is disabled or you are not admin!</div>';
             return $msg;
         }elseif ($loginResult) {
 

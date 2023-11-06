@@ -95,7 +95,7 @@ if (isset($username)) {
                         } ?></td>
                         <td><?php echo $value->email; ?></td>
                         <td>
-                          <?php if ($value->isActive == '0') { ?>
+                          <?php if ($value->isEnabled == '1') { ?>
                           <span class="badge badge-lg badge-info text-white">Active</span>
                         <?php }else{ ?>
                     <span class="badge badge-lg badge-danger text-white">Deactive</span>
@@ -111,13 +111,13 @@ if (isset($username)) {
                     } ?>
                              btn-sm " href="?delete=<?php echo $value->user_id;?>">Delete</a>
 
-                             <?php if ($value->isActive == '0') {  ?>
+                             <?php if ($value->isEnabled == '1') {  ?>
                                <a onclick="return confirm('Are you sure you wish to disable this user?')" class="btn btn-warning
                        <?php if (Session::get("user_id") == $value->user_id) {
                          echo "disabled";
                        } ?>
                                 btn-sm " href="?disable=<?php echo $value->user_id;?>">Disable</a>
-                             <?php } elseif($value->isActive == '1'){?>
+                             <?php } elseif($value->isEnabled == '0'){?>
                                <a onclick="return confirm('Are you sure you wish to enable this user?')" class="btn btn-secondary
                        <?php if (Session::get("user_id") == $value->user_id) {
                          echo "enabled";

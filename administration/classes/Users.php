@@ -117,10 +117,11 @@ class Users{
   // User login info method
   public function userLoginInfo($email, $password){
     $password = SHA1($password);
-    $sql = "SELECT * FROM user WHERE email = :email and password = :password LIMIT 1";
+    $sql = "SELECT * FROM user WHERE email = :email and password = :password and isEnabled = :isEnabled LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':password', $password);
+    $stmt->bindValue(':isEnabled', 1);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_OBJ);
   }

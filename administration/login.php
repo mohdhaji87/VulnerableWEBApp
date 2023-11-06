@@ -7,10 +7,10 @@ Session::CheckLogin();
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
-   $userLog = $users->userAuthentication($_POST);
+   $userLogin = $users->userAuthentication($_POST);
 }
-if (isset($userLog)) {
-  echo $userLog;
+if (isset($userLogin)) {
+  echo $userLogin;
 }
 
 $logout = Session::get('logout');

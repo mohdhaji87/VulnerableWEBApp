@@ -141,7 +141,16 @@ class Users{
     $stmt->bindValue(':email', $email);
     $stmt->bindValue(':role_id', 1);
     $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_OBJ);
+    $test1 = $stmt->fetch(PDO::FETCH_OBJ);
+    $sql = "SELECT * FROM admin WHERE email = :email and isAdmin = :isAdmin LIMIT 1";
+    $stmt = $this->db->pdo->prepare($sql);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':isAdmin', 1);
+    $stmt->execute();
+    $test2 = $stmt->fetch(PDO::FETCH_OBJ);
+    if ($test1 && $test2) {
+      return TRUE;
+    }
   }
 
 

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `avatar_id` varchar(255) DEFAULT NULL,
-  `role_id` tinyint(4) DEFAULT NULL,
+  `role_id` tinyint(4) DEFAULT '2',
   `isActive` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;

@@ -17,8 +17,8 @@ INSERT INTO `role` (`role_id`, `role_type`) VALUES
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
   `email` varchar(255) DEFAULT NULL,
-  `isAdmin` varchar(255) DEFAULT NULL,
-) ENGINE=InnoDB CHARSET=utf8mb4;
+  `isAdmin` tinyint(4) DEFAULT '0',
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `admin` (`email`, `isAdmin`) VALUES
 ('admin@admin.admin', 1);

@@ -81,18 +81,18 @@ if (isset($updateUser)) {
               
               if($image["pictures"]){
                 $upload = $image->upload();
-                if($upload){
-                  $avatar_id=$image->getName().".".$image->getMime(); // cat.gif
+                if($upload)
                   echo "Profile picture successfully uploaded";
-                } else{
+                  ?>
+                  <p>
+                  <img src="<?php echo $upload->getPath(); ?>">
+                  </p>
+                  <?php
+                }else{
                     echo $image->getError();
                 }
               }
               ?>
-              
-              <p>
-              <img src="<?php if ($upload) { echo $upload->getPath(); } ?>">
-              </p>
               </div>
               <div class="form-group">
                 <label for="username">Username</label>

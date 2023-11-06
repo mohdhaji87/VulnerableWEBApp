@@ -49,6 +49,61 @@ if (isset($updateUser)) {
               <div class="form-group">
                 <label for="avatar">Avatar</label>
                 <p><img src="../avatars/<?php echo $getUinfo->avatar_id; ?>" ></p>
+                <h2> Change profile picture</h2>
+                <form method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="MAX_FILE_SIZE" value="1000000"/>
+                <input type="file" name="pictures" accept="image/*"/>
+                <input type="submit" value="upload"/>
+                </form>
+
+                <?php
+              require_once  "../bulletproof.php";
+              
+              $image = new Bulletproof\Image($_FILES);
+              
+              // To provide a name for the image. If unused, image name will be auto-generated.
+              //$image->setName('test');
+              
+              // To set the min/max image size to upload (in bytes)
+              $image->setSize(1000, 10000);
+              
+              // To define a list of allowed image types to upload
+              $image->setMime(array('jpeg', 'jpg', 'gif'));
+              
+              // To set the max image height/width to upload (limit in pixels)
+              $image->setDimension(128, 128);
+              
+              // To create a folder name to store the uploaded image, with optional chmod permission
+              $image->setStorage("./avatars", 0666);
+              
+              //$image->setName("test")
+              //      ->setMime(["gif"])
+              //      ->setStorage(__DIR__ . "/avatars", 0666);
+              
+              if($image["pictures"]){
+                $upload = $image->upload();
+                if($upload){
+                  $avatar_id=$image->getName().".".$image->getMime(); // cat.gif
+
+
+                 
+                  $sql="update user set avatar_id='$avatar_id' where username='$a'";
+                  mysqli_query($db, $sql) or die('Error querying database.');
+
+
+                 
+                  echo "Profile picture successfully uploaded";
+                } else{
+                    echo $image->getError();
+                }
+              }
+              ?>
+              
+              <p>
+              <img src="<?php if ($upload) { echo $upload->getPath(); } ?>">
+              </p>
+
+               
               </div>
               <div class="form-group">
                 <label for="username">Username</label>

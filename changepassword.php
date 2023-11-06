@@ -28,10 +28,6 @@ header("Location: /settings.php");
 //update password 
 
 $sql="UPDATE user set password='$new' where username='$user' AND password='$old'";
-
-echo $sql;
-echo "</br>";
-
 $result=mysqli_query($db, $sql) or die('Error querying database.');
 
 if( mysqli_affected_rows($db)>0)

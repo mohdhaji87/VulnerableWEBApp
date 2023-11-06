@@ -83,11 +83,6 @@ if (isset($updateUser)) {
                 $upload = $image->upload();
                 if($upload){
                   echo "Profile picture successfully uploaded";
-                  ?>
-                  <p>
-                  <img src="<?php echo $upload->getPath(); ?>">
-                  </p>
-                  <?php
                 }else{
                     echo $image->getError();
                 }

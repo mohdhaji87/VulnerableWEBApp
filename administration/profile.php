@@ -83,14 +83,6 @@ if (isset($updateUser)) {
                 $upload = $image->upload();
                 if($upload){
                   $avatar_id=$image->getName().".".$image->getMime(); // cat.gif
-
-
-                 
-                  $sql="update user set avatar_id='$avatar_id' where username='$a'";
-                  mysqli_query($db, $sql) or die('Error querying database.');
-
-
-                 
                   echo "Profile picture successfully uploaded";
                 } else{
                     echo $image->getError();

@@ -63,7 +63,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
             <?php if (Session::get('role_id') == '1') { ?>
               <li class="nav-item">
 
-                  <a class="nav-link" href="index.php"><i class="fas fa-users mr-2"></i>User lists </span></a>
+                  <a class="nav-link" href="index.php"><i class="fas fa-users mr-2"></i>Userlists </span></a>
               </li>
               <li class="nav-item
 
@@ -86,7 +86,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
       				$path = $_SERVER['SCRIPT_FILENAME'];
       				$current = basename($path, '.php');
       				if ($current == 'profile') {
-      					echo "active ";
+      					echo " active ";
       				}
 
       			 ?>
@@ -102,20 +102,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
           <?php }else{ ?>
 
               <li class="nav-item
-
-              <?php
-
-                          $path = $_SERVER['SCRIPT_FILENAME'];
-                          $current = basename($path, '.php');
-                          if ($current == 'register') {
-                            echo " active ";
-                          }
-
-                         ?>">
-                <a class="nav-link" href="register.php"><i class="fas fa-user-plus mr-2"></i>Register</a>
-              </li>
-              <li class="nav-item
-                <?php
 
                     				$path = $_SERVER['SCRIPT_FILENAME'];
                     				$current = basename($path, '.php');

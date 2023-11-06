@@ -96,9 +96,9 @@ if (isset($username)) {
                         <td><?php echo $value->email; ?></td>
                         <td>
                           <?php if ($value->isEnabled == '1') { ?>
-                          <span class="badge badge-lg badge-info text-white">Active</span>
+                          <span class="badge badge-lg badge-info text-white">Enabled</span>
                         <?php }else{ ?>
-                    <span class="badge badge-lg badge-danger text-white">Deactive</span>
+                    <span class="badge badge-lg badge-danger text-white">Disabled</span>
                         <?php } ?>
                         </td>
 

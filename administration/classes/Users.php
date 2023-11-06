@@ -74,7 +74,7 @@ class Users{
         return $msg;
     }else{
 
-      $sql = "INSERT INTO user(username, password, email, role_id) VALUES (:username, :password, :email, :role_id)";
+      $sql = "INSERT INTO user (username, password, email, role_id) VALUES (:username, :password, :email, :role_id)";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':username', $username);
       $stmt->bindValue(':password', SHA1($password));
@@ -84,12 +84,12 @@ class Users{
       if ($result) {
         $msg = '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Success !</strong> Wow, you have Registered Successfully !</div>';
+  <strong>Success !</strong> Registered successfully!</div>';
           return $msg;
       }else{
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Error !</strong> Something went Wrong !</div>';
+  <strong>Error !</strong> Something went Wrong!</div>';
           return $msg;
       }
 

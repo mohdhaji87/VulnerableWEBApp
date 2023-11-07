@@ -25,7 +25,7 @@ Session::CheckSession();
 
  <div class="card ">
    <div class="card-header">
-          <h3>Change your password <span class="float-right"> <a href="profile.php?id=<?php  ?>" class="btn btn-primary">Back</a> </h3>
+          <h3>Change your password <span class="float-right"> <a href="profile.php?user_id=<?php  ?>" class="btn btn-primary">Back</a> </h3>
         </div>
         <div class="card-body">
 

@@ -63,7 +63,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
             <?php if ( Session::get('role_id') && $users->CheckAdminUser(Session::get("email")) ) { ?>
               <li class="nav-item">
 
-                  <a class="nav-link" href="index.php"><i class="fas fa-users mr-2"></i>Userlist </span></a>
+
+                  <a class="nav-link" href="index.php"><i class="fas fa-users mr-2"></i>User lists </span></a>
               </li>
               <li class="nav-item
 
@@ -72,7 +73,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
                           $path = $_SERVER['SCRIPT_FILENAME'];
                           $current = basename($path, '.php');
                           if ($current == 'addUser') {
-                            echo " active ";
+                            echo " active";
                           }
 
                          ?>">
@@ -86,7 +87,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
       				$path = $_SERVER['SCRIPT_FILENAME'];
       				$current = basename($path, '.php');
       				if ($current == 'profile') {
-      					echo " active ";
+      					echo " active";
       				}
 
       			 ?>
@@ -102,11 +103,12 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
           <?php }else{ ?>
 
               <li class="nav-item
+                <?php
 
                     				$path = $_SERVER['SCRIPT_FILENAME'];
                     				$current = basename($path, '.php');
                     				if ($current == 'login') {
-                    					echo " active ";
+                    					echo " active";
                     				}
 
                     			 ?>">

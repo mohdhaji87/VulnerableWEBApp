@@ -54,6 +54,8 @@ if (isset($updateUser)) {
                 <input type="submit" value="upload"/>
                 </form>
 
+              <form class="" action="" method="POST">
+               
                 <?php
               require_once  "../bulletproof.php";
               
@@ -92,7 +94,6 @@ if (isset($updateUser)) {
               }
               ?>
               </div>
-              <form class="" action="" method="POST">
               <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" value="<?php echo $getUinfo->username; ?>" class="form-control">

@@ -73,7 +73,7 @@ class Users{
         return $msg;
     }else{
 
-      $sql = "INSERT INTO user (username, password, email) VALUES (:username, :password, :email)";
+      $sql = "INSERT INTO user(username, password, email) VALUES(:username, :password, :email)";
       $stmt = $this->db->pdo->prepare($sql);
       $stmt->bindValue(':username', $username);
       $stmt->bindValue(':password', SHA1($password));

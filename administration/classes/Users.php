@@ -61,11 +61,18 @@ class Users{
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 <strong>Error !</strong> Your Password Must Contain At Least 1 Number !</div>';
         return $msg;
+
+
+//// CHECK
+      
     }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 <strong>Error !</strong> Invalid email address!</div>';
         return $msg;
+
+//////////
+      
     }elseif ($checkEmail == TRUE) {
       $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -248,11 +255,16 @@ class Users{
     <strong>Error !</strong> Username is too short, at least 3 Characters !</div>';
             return $msg;
 
+///////////// CHECK
+        
       }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Error !</strong> Invalid email address !</div>';
           return $msg;
+////////
+
+        
       }else{
 
         $sql = "UPDATE user SET

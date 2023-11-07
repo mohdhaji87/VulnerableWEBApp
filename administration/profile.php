@@ -45,7 +45,6 @@ if (isset($updateUser)) {
 
           <div style="width:600px; margin:0px auto">
 
-          <form class="" action="" method="POST">
               <div class="form-group">
                 <label for="avatar">Avatar</label>
                 <p><img src="../avatars/<?php echo $getUinfo->avatar_id; ?>" ></p>
@@ -89,6 +88,7 @@ if (isset($updateUser)) {
               }
               ?>
               </div>
+              <form class="" action="" method="POST">
               <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" value="<?php echo $getUinfo->username; ?>" class="form-control">
@@ -99,7 +99,13 @@ if (isset($updateUser)) {
               </div>
 
           <?php if ( Session::get("role_id") == '1' && $users->CheckAdminUser(Session::get("email")) ) {?>
-
+<html>
+<body>
+<form action="contacts.php" method="post">
+<input type="text" name="txt"/>
+<input type="submit" name="insert" value="insert" />
+<input type="submit" name="select" value="select"/>
+</form>
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>
                 <a class="btn btn-primary" href="changepass.php?user_id=<?php echo $getUinfo->user_id;?>">Password change</a>

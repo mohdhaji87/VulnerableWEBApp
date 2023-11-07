@@ -11,6 +11,7 @@ if (isset($_GET['user_id'])) {
 
 }
 
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
   $updateUser = $users->updateUserByIdInfo($user_id, $_POST);
 
@@ -23,6 +24,7 @@ if (isset($updateUser)) {
 
 
  ?>
+
  <div class="card ">
    <div class="card-header">
           <h3>User Profile <span class="float-right"> <a href="index.php" class="btn btn-primary">Back</a> </h3>
@@ -30,7 +32,7 @@ if (isset($updateUser)) {
         <div class="card-body">
 
     <?php
-    $getUinfo = $users->getUserInfoById($user_id);
+    $getUinfo = $users->getUserInfoById($userid);
     if ($getUinfo) {
 
 
@@ -100,7 +102,7 @@ if (isset($updateUser)) {
 
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>
-                <a class="btn btn-primary" href="changepass.php?id=<?php echo $getUinfo->user_id;?>">Password change</a>
+                <a class="btn btn-primary" href="changepass.php?user_id=<?php echo $getUinfo->user_id;?>">Password change</a>
               </div>
                 <?php } ?>
 

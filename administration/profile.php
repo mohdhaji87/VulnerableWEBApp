@@ -6,6 +6,13 @@ Session::CheckSession();
 
 <?php
 
+if (isset($_GET['id'])) {
+  $userid = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['id']);
+
+}
+
+<?php
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
   $updateUser = $users->updateUserByIdInfo($user_id, $_POST);

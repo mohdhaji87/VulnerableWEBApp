@@ -234,9 +234,10 @@ class Users{
     public function updateUserByIdInfo($user_id, $data){
       $username = $data['username'];
       $email = $data['email'];
-      $avatar_id = $data['avatar_id'];
-      $role_id = $data['role_id'];
-
+      if ($data['avatar_id']){
+        $avatar_id = $data['avatar_id'];
+      }
+      
       if ($username == ""|| $email == "") {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -254,18 +255,30 @@ class Users{
   <strong>Error !</strong> Invalid email address !</div>';
           return $msg;
       }else{
-
-        $sql = "UPDATE user SET
-          username = :username,
-          email = :email,
-          avatar_id = :avatar_id,
-          WHERE user_id = :user_id";
-          $stmt= $this->db->pdo->prepare($sql);
-          $stmt->bindValue(':user_id', $user_id);
-          $stmt->bindValue(':username', $username);
-          $stmt->bindValue(':email', $email);
-          $stmt->bindValue(':avatar_id', $avatar_id);
-        $result =   $stmt->execute();
+          if ($data['avatar_id']){
+            $avatar_id = $data['avatar_id'];
+            $sql = "UPDATE user SET
+            username = :username,
+            email = :email,
+            avatar_id = :avatar_id,
+            WHERE user_id = :user_id";
+            $stmt= $this->db->pdo->prepare($sql);
+            $stmt->bindValue(':user_id', $user_id);
+            $stmt->bindValue(':username', $username);
+            $stmt->bindValue(':email', $email);
+            $stmt->bindValue(':avatar_id', $avatar_id);
+            $result =   $stmt->execute();
+          }else{
+            $sql = "UPDATE user SET
+            username = :username,
+            email = :email,
+            WHERE user_id = :user_id";
+            $stmt= $this->db->pdo->prepare($sql);
+            $stmt->bindValue(':user_id', $user_id);
+            $stmt->bindValue(':username', $username);
+            $stmt->bindValue(':email', $email);
+            $result =   $stmt->execute();
+          }
 
         if ($result) {
           echo "<script>location.href='index.php';</script>";

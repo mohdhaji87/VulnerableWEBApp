@@ -102,7 +102,7 @@ if (isset($updateUser)) {
             <input type="hidden" name="role_id" value="<?php echo $getUinfo->role_id; ?>">
           <?php }?>
               
-              <?php if (Session::get("roleid") == '1') {?>
+          <?php if (Session::get("roleid") == '1') {?>
 
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>

@@ -86,7 +86,9 @@ if (isset($updateUser)) {
                   echo "New avatar uploaded successfully!";
                   ?>
                    <p><img src="../avatars/<?php echo $upload->getPath(); ?>" ></p>
-                   <input type="hidden" name="avatar_id" value="<?php echo $upload->getPath(); ?>">
+                   <?php $avatar_id=$image->getName().".".$image->getMime(); // cat.gif ?>
+                   <input type="hidden" name="avatar_id" value="<?php echo $avatar_id; ?>">
+                  
                 <?php }else{
                     echo $image->getError();
                 }

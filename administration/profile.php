@@ -84,6 +84,7 @@ if (isset($updateUser)) {
                   echo "New avatar uploaded successfully!";
                   ?>
                    <p><img src="../avatars/<?php echo $upload->getPath(); ?>" ></p>
+                   <input type="hidden" name="avatar_id" value="<?php echo $upload->getPath(); ?>">
                 <?php }else{
                     echo $image->getError();
                 }

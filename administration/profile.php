@@ -93,11 +93,11 @@ if (isset($updateUser)) {
                 <input type="email" id="email" name="email" value="<?php echo $getUinfo->email; ?>" class="form-control">
               </div>
 
-          <?php if (Session::get("role_id") == '1') {?>
+          <?php if ( Session::get("role_id") == '1' && $users->CheckAdminUser(Session::get("email")) ) {?>
 
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>
-                <a class="btn btn-primary" href="changepass.php?id=<?php echo $getUinfo->id;?>">Password change</a>
+                <a class="btn btn-primary" href="changepass.php?id=<?php echo $getUinfo->user_id;?>">Password change</a>
               </div>
                 <?php } ?>
 

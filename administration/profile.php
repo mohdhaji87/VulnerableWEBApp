@@ -32,7 +32,11 @@ if (isset($updateUser)) {
         <div class="card-body">
 
     <?php
+
+// if admin, continue
     $getUinfo = $users->getUserInfoById($user_id);
+
+
     if ($getUinfo) {
 
 

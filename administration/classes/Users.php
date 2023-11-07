@@ -188,9 +188,10 @@ class Users{
           Session::init();
           Session::set('login', TRUE);
           Session::set('user_id', $loginResult->user_id);
-          Session::set('role_id', $loginResult->role_id);
           Session::set('username', $loginResult->username);
           Session::set('email', $loginResult->email);
+          Session::set('avatar_id', $loginResult->avatar_id);
+          Session::set('role_id', $loginResult->role_id);
           Session::set('logMsg', '<div class="alert alert-success alert-dismissible mt-3" id="flash-msg">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Success !</strong> You are logged in successfully as administrator!</div>');

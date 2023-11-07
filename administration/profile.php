@@ -32,7 +32,7 @@ if (isset($updateUser)) {
         <div class="card-body">
 
     <?php
-    $getUinfo = $users->getUserInfoById($userid);
+    $getUinfo = $users->getUserInfoById($user_id);
     if ($getUinfo) {
 
 

@@ -6,8 +6,8 @@ Session::CheckSession();
 
 <?php
 
-if (isset($_GET['id'])) {
-  $userid = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['id']);
+if (isset($_GET['user_id'])) {
+  $user_id = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['user_id']);
 
 }
 
@@ -23,7 +23,6 @@ if (isset($updateUser)) {
 
 
  ?>
-
  <div class="card ">
    <div class="card-header">
           <h3>User Profile <span class="float-right"> <a href="index.php" class="btn btn-primary">Back</a> </h3>

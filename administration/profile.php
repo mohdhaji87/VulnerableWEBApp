@@ -105,9 +105,7 @@ if (isset($updateUser)) {
                 <input type="email" id="email" name="email" value="<?php echo $getUinfo->email; ?>" class="form-control">
               </div>
                 
-                <input type="hidden" name="role_id" value="<?php echo $getUinfo->role_id; ?>">
                 
-                   
           <?php if ( Session::get("role_id") == '1' && $users->CheckAdminUser(Session::get("email")) ) {?>
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>

@@ -259,7 +259,7 @@ class Users{
             $sql = "UPDATE user SET
             username = :username,
             email = :email,
-            avatar_id = :avatar_id,
+            avatar_id = :avatar_id
             WHERE user_id = :user_id";
             $stmt= $this->db->pdo->prepare($sql);
             $stmt->bindValue(':username', $username);
@@ -270,7 +270,7 @@ class Users{
           }else{
             $sql = "UPDATE user SET
             username = :username,
-            email = :email,
+            email = :email
             WHERE user_id = :user_id";
             $stmt= $this->db->pdo->prepare($sql);
             $stmt->bindValue(':username', $username);

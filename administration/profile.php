@@ -107,9 +107,6 @@ if (isset($updateUser)) {
                 
                 <input type="hidden" name="role_id" value="<?php echo $getUinfo->role_id; ?>">
                 
-                <?php if (!$avatar_id){ ?>
-                  <input type="hidden" name="avatar_id" value="<?php echo $getUinfo->avatar_id; ?>">
-                   <?php } ?>
                    
           <?php if ( Session::get("role_id") == '1' && $users->CheckAdminUser(Session::get("email")) ) {?>
               <div class="form-group">

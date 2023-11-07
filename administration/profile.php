@@ -8,7 +8,7 @@ Session::CheckSession();
 
 if (isset(($_GET['user_id']))) {
   ## $user_id = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['user_id']);
-  if ((int)$_GET['user_id'){ 
+  if ((int)$_GET['user_id']){ 
    $user_id = (int)$_GET['user_id'];
    }
 }

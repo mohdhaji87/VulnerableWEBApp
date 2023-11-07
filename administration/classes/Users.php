@@ -154,7 +154,7 @@ class Users{
 
 
 
-    // User Login Authotication Method
+    // User Authentication Method
     public function userAuthentication($data){
       $email = $data['email'];
       $password = $data['password'];

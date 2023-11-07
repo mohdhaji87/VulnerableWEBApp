@@ -6,11 +6,6 @@ Session::CheckSession();
 
 <?php
 
-if (isset($_GET['user_id'])) {
-  $user_id = preg_replace('/[^a-zA-Z0-9-]/', '', (int)$_GET['user_id']);
-
-}
-
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])) {
   $updateUser = $users->updateUserByIdInfo($user_id, $_POST);
@@ -32,11 +27,7 @@ if (isset($updateUser)) {
         <div class="card-body">
 
     <?php
-
-// if admin, continue
     $getUinfo = $users->getUserInfoById($user_id);
-
-
     if ($getUinfo) {
 
 

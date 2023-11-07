@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `avatar_id` varchar(255) DEFAULT NULL,
+  `avatar_id` varchar(255) DEFAULT '654abcb599cde8.95483491_ehklfjmoigpqn.jpeg',
   `role_id` tinyint(4) DEFAULT '2',
   `isEnabled` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`user_id`)

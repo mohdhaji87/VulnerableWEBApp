@@ -81,10 +81,13 @@ if (isset($updateUser)) {
               if($image["pictures"]){
                 $upload = $image->upload();
                 if($upload){
-                  echo "Profile picture successfully uploaded";
-                }else{
+                  echo "New avatar uploaded successfully!";
+                  ?>
+                   <p><img src="../avatars/<?php echo $upload->getPath(); ?>" ></p>
+                <?php }else{
                     echo $image->getError();
                 }
+               
               }
               ?>
               </div>

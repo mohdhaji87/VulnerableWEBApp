@@ -262,10 +262,10 @@ class Users{
             avatar_id = :avatar_id,
             WHERE user_id = :user_id";
             $stmt= $this->db->pdo->prepare($sql);
-            $stmt->bindValue(':user_id', $user_id);
             $stmt->bindValue(':username', $username);
             $stmt->bindValue(':email', $email);
             $stmt->bindValue(':avatar_id', $avatar_id);
+            $stmt->bindValue(':user_id', $user_id);
             $result =   $stmt->execute();
           }else{
             $sql = "UPDATE user SET
@@ -273,9 +273,9 @@ class Users{
             email = :email,
             WHERE user_id = :user_id";
             $stmt= $this->db->pdo->prepare($sql);
-            $stmt->bindValue(':user_id', $user_id);
             $stmt->bindValue(':username', $username);
             $stmt->bindValue(':email', $email);
+            $stmt->bindValue(':user_id', $user_id);
             $result =   $stmt->execute();
           }
 

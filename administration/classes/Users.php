@@ -248,8 +248,7 @@ class Users{
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Error !</strong> Username is too short, at least 3 Characters !</div>';
             return $msg;
-
-        }elseif ( !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+        }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
           $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Error !</strong> Invalid email address !</div>';

@@ -257,14 +257,14 @@ class Users{
         $sql = "UPDATE user SET
           username = :username,
           email = :email,
-          role_id = :role_id,
           avatar_id = :avatar_id,
+          role_id = :role_id,
           WHERE user_id = :user_id";
           $stmt= $this->db->pdo->prepare($sql);
           $stmt->bindValue(':username', $username);
           $stmt->bindValue(':email', $email);
-          $stmt->bindValue(':role_id', $role_id);
           $stmt->bindValue(':avatar_id', $avatar_id);
+          $stmt->bindValue(':role_id', $role_id);
           $stmt->bindValue(':user_id', $user_id);
         $result =   $stmt->execute();
 

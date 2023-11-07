@@ -266,14 +266,12 @@ class Users{
           username = :username,
           email = :email,
           avatar_id = :avatar_id,
-          role_id = :role_id,
           WHERE user_id = :user_id";
           $stmt= $this->db->pdo->prepare($sql);
+          $stmt->bindValue(':user_id', $user_id);
           $stmt->bindValue(':username', $username);
           $stmt->bindValue(':email', $email);
           $stmt->bindValue(':avatar_id', $avatar_id);
-          $stmt->bindValue(':role_id', $role_id);
-          $stmt->bindValue(':user_id', $user_id);
         $result =   $stmt->execute();
 
         if ($result) {

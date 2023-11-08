@@ -133,7 +133,7 @@ class Users{
   }
 
     // Check User Account admin status
-  public function CheckAdminUser($email, $user_id){
+  public function CheckAdminUser($user_id, $email){
     $sql = "SELECT * FROM user WHERE email = :email and role_id = :role_id LIMIT 1";
     $stmt = $this->db->pdo->prepare($sql);
     $stmt->bindValue(':email', $email);
@@ -175,7 +175,7 @@ class Users{
       }else{
 
         $loginResult = $this->userLoginInfo($email, $password);
-        $chkAdmin = $this->CheckAdminUser($email);
+        $chkAdmin = $this->CheckAdminUser($email, $user_id);
         $chkEnabled = $this->CheckEnabledUser($email);
 
         if ($chkAdmin == FALSE || $chkEnabled == FALSE) {

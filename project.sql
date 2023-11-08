@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `isAdmin` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `admin` (`user_id`, `isAdmin`) VALUES
 ('21', 1);

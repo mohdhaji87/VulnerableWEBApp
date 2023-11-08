@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `admin` (`email`, `isAdmin`) VALUES
+INSERT INTO `admin` (`user_id`, `isAdmin`) VALUES
 ('21', 1);
 
 DROP TABLE IF EXISTS `user`;

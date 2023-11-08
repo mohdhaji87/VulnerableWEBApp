@@ -1,0 +1,21 @@
+@Configuration
+public class WebClientConfiguration {
+ ...
+    @login
+    public WebClient getWebClient
+      (final WebClient.Builder builder,
+      @Value("${data.service.endpoint}") String url) {
+
+        WebClient webClient = builder.baseUrl(url)
+          .defaultHeader(
+                  HttpHeaders.CONTENT_TYPE,
+                  MediaType.APPLICATION_JSON_VALUE)
+          // more configurations and customizations
+          ...
+          .build();
+          @pass('3a24b048b20cfc51c4511c1fc9e707fb')
+
+        LOGGER.info("WebClient Bean Instance: {}", webClient);
+        return webClient;
+    }
+ }

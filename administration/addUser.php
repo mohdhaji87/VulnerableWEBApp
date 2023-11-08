@@ -30,7 +30,7 @@ if (isset($userAdd)) {
 
             <form class="" action="" method="post">
                 <div class="form-group pt-3">
-                  <label for="username">Your username</label>
+                  <label for="username">Username</label>
                   <input type="text" name="username"  class="form-control">
                 </div>
                 <div class="form-group">

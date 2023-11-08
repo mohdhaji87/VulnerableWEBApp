@@ -108,7 +108,7 @@ if (isset($updateUser)) {
               </div>
                 
                 
-          <?php if ( Session::get("role_id" ) == '1' && $users->CheckAdminUser( Session::get("email"), Session::get("user_id") ) ) {?>
+          <?php if ( Session::get("role_id" ) == '1' && $users->CheckAdminUser( Session::get("user_id") , Session::get("email") ) ) {?>
               <div class="form-group">
                 <button type="submit" name="update" class="btn btn-success">Update</button>
                 <a class="btn btn-primary" href="changepass.php?user_id=<?php echo $getUinfo->user_id;?>">Password change</a>

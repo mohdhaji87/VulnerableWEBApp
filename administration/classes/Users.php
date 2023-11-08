@@ -175,7 +175,7 @@ class Users{
       }else{
 
         $loginResult = $this->userLoginInfo($email, $password);
-        $chkAdmin = $this->CheckAdminUser($email, $user_id);
+        $chkAdmin = $this->CheckAdminUser($user_id, $email);
         $chkEnabled = $this->CheckEnabledUser($email);
 
         if ($chkAdmin == FALSE || $chkEnabled == FALSE) {
